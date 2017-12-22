@@ -216,7 +216,7 @@ nav {
 
 main {
 	grid-area: main;
-	overflow: auto;
+	overflow-y: scroll;
 }
 
 .content-wrapper {
@@ -297,6 +297,10 @@ main {
 	justify-content: center;
 }
 
+.promo-data.type span {
+	text-transform: capitalize;
+}
+
 .promo-data img, .promo-data span img {
 	margin-top: 5px;
 }
@@ -359,8 +363,8 @@ main {
 }
 
 .view-grid select {
-	width: 91%;
-	font-size: 18px;
+	width: 92%;
+	font-size: 16px;
 }
 
 .grid-heading.status, .grid-data.click {
