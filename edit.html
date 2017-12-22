@@ -1,0 +1,140 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- <link rel="manifest" href="site.webmanifest"> -->
+        <!-- <link rel="apple-touch-icon" href="icon.png"> -->
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    </head>
+    <body role="document">
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="wrapper">
+        	<div class="drync-grid">
+        		<header role="header">
+        			<div class="header-bg">
+        				<h1>
+        					<a href="index.html">
+        						<span>Portal Powered by Drync</span>
+        					</a>
+        				</h1>
+        				<div class="store-selection">
+        					<select name="store-select" id="store-select">
+        						<option value="joes">Joe's</option>
+        					</select>
+        				</div>
+        				<div class="user-avatar">
+                            <a href=""></a>
+                        </div>
+        			</div>
+        		</header>
+        		<nav role="nav">
+                    <div class="nav-wrapper">
+                        <div class="nav-item-01"><a href="">Dashboard</a></div>
+                        <div class="nav-item-02"><a href="">Order Management</a></div>
+                        <div class="nav-item-03"><a href="">Reporting</a></div>
+                        <div class="nav-item-04"><a href="">Marketing</a></div>
+                        <div class="nav-item-05 active"><a href="index.html">Promotions</a></div>
+                        <div class="nav-item-06"><a href="">Store</a></div>
+                        <div class="nav-item-07"><a href="">Help</a></div>
+                    </div>
+                </nav>
+        		<main role="main">
+                    <div class="content-wrapper">
+                        <div class="content-heading">
+                            <h2>Promotions</h2>
+                            <!-- <div class="add-new">
+                                <a href="form.html">Add New Promotion</a>
+                            </div> -->
+                        </div>
+                        <div class="content-bg">
+                            <div class="title-grid">
+                                <div class="grid-heading promo-name"><span>Name</span></div>
+                                <div class="grid-heading promo-code"><span>Code</span></div>
+                                <div class="grid-data promo-name"><input type="text" value="All Argentine Reds"></div>
+                                <div class="grid-data promo-code"><input type="text" value="ARG18"></div>
+                            </div>
+                            <div class="view-grid">
+                                <div class="grid-heading status">Status</div>
+                                <div class="grid-data click"><span>Active<a href="edit-inactive.html"><img src="img/state-active.svg" alt="Active"></a></span></div>
+                                <div class="grid-heading"><span>Discount Amount</span></div>
+                                <div class="grid-heading"><span>Discount Type</span></div>
+                                <div class="grid-heading"><span>Minimum Purchase</span></div>
+                                <div class="grid-heading"><span>Sale Items</span></div>
+                                <div class="grid-data"><input type="text" value="12"></div>
+                                <div class="grid-data">
+                                    <select name="" id="">
+                                        <option value="amount">Amount</option>
+                                        <option value="percent">Percentage</option>
+                                        <option value="frees">Free Shipping</option>
+                                        <option value="freed">Free Delivery</option>
+                                    </select>
+                                </div>
+                                <div class="grid-data"><input type="text" value="$100"></div>
+                                <div class="grid-data"><span class="edit-form"><input type="checkbox">Excluded</span></div>
+                                <div class="grid-heading period-title">Promotional Period<span></span></div>
+                                <div class="grid-heading price-title">Price Limits<span></span></div>
+                                <div class="grid-heading">Start<span></span></div>
+                                <div class="grid-heading">Stop<span></span></div>
+                                <div class="grid-heading">Min<span></span></div>
+                                <div class="grid-heading">Max<span></span></div>
+                                <div class="grid-data date-start"><input type="text" value="01 Jan 2018"></div>
+                                <div class="grid-data date-end"><input type="text" value="31 Jan 2018">
+                                </div>
+                                <div class="grid-data price-min"><input type="text" value="$10"></div>
+                                <div class="grid-data price-max"><input type="text" value="$250">
+                                </div>
+                                <div class="grid-heading applicable-stores"><span>Applicable Stores</span></div>
+                                <div class="grid-data all-stores"><span class="edit-form"><input type="checkbox" checked>All Stores</span><a href="" class="store-link">See All</a></div>
+                                <div class="grid-heading"><span>Type</span></div>
+                                <div class="grid-heading"><span>Style</span></div>
+                                <div class="grid-heading type-region"><span>Region</span></div>
+                                <div class="grid-data">
+                                    <select name="" id="">
+                                        <option value="">Wine</option>
+                                        <option value="">Beer</option>
+                                        <option value="">Spirits</option>
+                                        <option value="">Extra</option>
+                                    </select>
+                                </div>
+                                <div class="grid-data">
+                                    <select name="" id="">
+                                        <option value="">Red</option>
+                                    </select>
+                                </div>
+                                <div class="grid-data type-region">
+                                    <select name="" id="">
+                                        <option value="">Argentina</option>
+                                    </select>
+                                </div>
+                                <div class="grid-heading current-display"><span>Current Display</span></div>
+                                <div class="grid-data display-image"><span>
+                                    <img src="img/argetine-reds.png" alt="Promo Image" width="250"><br><a href="">Upload A Photo</a>
+                                </span></div>
+                            </div>
+                            <div class="save-promo">
+                                <a href="view.html">
+                                    <button>Save</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+        		</main>
+        	</div>
+        </div>
+        <script src="../js/main.js"></script>
+    </body>
+</html>
