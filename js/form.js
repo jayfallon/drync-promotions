@@ -25,6 +25,17 @@
         location.assign("view.html");
     }
 
+    prStatus.addEventListener('click', function(){
+        var status = document.getElementById('status');
+        if (this.checked === true) {
+            this.setAttribute('value', 'active');
+            status.innerHTML = "Active";
+        } else {
+            this.setAttribute('value', 'inactive');
+            status.innerHTML = "Inactive";
+        }
+    })
+
     // clear the form values and make ready to start over
     function clearForm() {
         document.getElementById("prName").value = '';

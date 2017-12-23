@@ -26,21 +26,34 @@
       prCode.appendChild(prCodeSpan);
       element.appendChild(prCode);
       //prAmount
-      console.log(dataObject.prType);
+      // console.log(dataObject.prType);
       prAmount = document.createElement('div');
       prAmount.setAttribute('class', 'promo-data disc');
       prAmountSpan = document.createElement('span');
-      
-      prAmountSpan.append(prAmountData);
+      if (dataObject.prType == 'amount') {
+        prAmountData = document.createTextNode('$'+dataObject.prAmount);
+        prAmountSpan.append(prAmountData);
+      } else if (dataObject.prType == 'percent') {
+        prAmountData = document.createTextNode(dataObject.prAmount+'%');
+        prAmountSpan.append(prAmountData);
+      } else if (dataObject.prType == 'frees') {
+        prAmountData = document.createTextNode('Free Shipping');
+        prAmountSpan.append(prAmountData);
+      } else if (dataObject.prType == 'freed') {
+        prAmountData = document.createTextNode('Free Delivery');
+        prAmountSpan.append(prAmountData);
+      }
       prAmount.appendChild(prAmountSpan);
       element.appendChild(prAmount);
       //period
       period = document.createElement('div');
       period.setAttribute('class', 'promo-data period');
-      periodSpan = document.createElement('span');
-      periodData = document.createTextNode(dataObject.perStart + ' - ' + dataObject.perStop);
-      periodSpan.append(periodData);
-      period.appendChild(periodSpan);
+      if (dataObject.perStart && dataObject.perStop) {
+        periodSpan = document.createElement('span');
+        periodData = document.createTextNode(dataObject.perStart + ' - ' + dataObject.perStop);
+        periodSpan.append(periodData);
+        period.appendChild(periodSpan);
+      }
       element.appendChild(period);
       //type
       type = document.createElement('div');
@@ -53,10 +66,12 @@
       //minimum
       minimum = document.createElement('div');
       minimum.setAttribute('class', 'promo-data min');
-      minimumSpan = document.createElement('span');
-      minimumData = document.createTextNode('$'+dataObject.priceMin);
-      minimumSpan.append(minimumData);
-      minimum.appendChild(minimumSpan);
+      if (dataObject.priceMin) {
+        minimumSpan = document.createElement('span');
+        minimumData = document.createTextNode('$'+dataObject.priceMin);
+        minimumSpan.append(minimumData);
+        minimum.appendChild(minimumSpan);
+      }
       element.appendChild(minimum);
       //prStatus
       prStatus = document.createElement('div');
@@ -71,7 +86,13 @@
       statusDis.setAttribute('class', 'promo-data click');
       statusDisSpan = document.createElement('span');
       statusDisImage = document.createElement('img');
-      statusDisImage.setAttribute('src', '/img/state-active.svg');
+      statusDisImage.setAttribute('class', 'status-toggle');
+      statusDisImage.setAttribute('data', [i]);
+      if (dataObject.prStatus === 'active') {
+        statusDisImage.setAttribute('src', '/img/state-active.svg');
+      } else {
+        statusDisImage.setAttribute('src', '/img/state-inactive.svg');
+      }
       statusDisImage.setAttribute('alt', 'Promotion Status');
       statusDisSpan.append(statusDisImage);
       statusDis.appendChild(statusDisSpan);
@@ -86,4 +107,24 @@
           writeRowToPage(oldPromotions[i],element);
       }
   }
+
+  function statusChange() {
+    var status = this.getAttribute("data");
+    console.log(oldPromotions[status].prStatus);
+    if (oldPromotions[status].prStatus == "active") {
+      oldPromotions[status].prStatus = "inactive";
+    } else if (oldPromotions[status].prStatus == "inactive") {
+      oldPromotions[status].prStatus = "active";
+    }
+    localStorage.setItem('PromotionsArray', JSON.stringify(oldPromotions));
+    location.assign("/");
+  }
+
+  var statusToggle = document.getElementsByClassName("status-toggle");
+
+  for (var i = 0; i < statusToggle.length; i++) {
+      statusToggle[i].addEventListener('click', statusChange);
+  }
+
+  console.log(statusToggle);
 })();

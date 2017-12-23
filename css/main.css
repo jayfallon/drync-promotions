@@ -301,8 +301,13 @@ main {
 	text-transform: capitalize;
 }
 
+.promo-data.status {
+	text-transform: capitalize;
+}
+
 .promo-data img, .promo-data span img {
 	margin-top: 5px;
+	cursor: pointer;
 }
 
 .promo-data a {
