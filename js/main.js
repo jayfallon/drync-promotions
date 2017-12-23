@@ -3,7 +3,7 @@
   var oldPromotions = JSON.parse(localStorage.getItem('PromotionsArray')) || [];
   console.log(oldPromotions);
 
-  var element = document.getElementById("promotions-grid");
+  var element = "";
 
   function writeRowToPage(dataObject, element) {
       //prName
@@ -97,20 +97,33 @@
       statusDisSpan.append(statusDisImage);
       statusDis.appendChild(statusDisSpan);
       element.appendChild(statusDis);
+      //prMessage
+      prMessage = document.createElement('div');
+      prMessage.setAttribute('class', 'promo-data message');
+      prMessageSpan = document.createElement('span');
+      prMessageData = document.createTextNode(dataObject.prMessage);
+      prMessageSpan.append(prMessageData);
+      prMessage.appendChild(prMessageSpan);
+      element.appendChild(prMessage);
   }
 
   //populate promotions list from old promotions
   // if old promotions exists
   if (oldPromotions != null) {
       for (var i = 0; i < oldPromotions.length; i++) {
-          // call on writeRowtoPage() to write your old data object to the page
+          for (prStatus in oldPromotions[i]) {
+            if (oldPromotions[i][prStatus] === 'active') {
+              element = document.getElementById("promotions-grid-active");
+            } else if (oldPromotions[i][prStatus] === 'inactive') {
+              element = document.getElementById("promotions-grid-inactive");
+            }
+          }
           writeRowToPage(oldPromotions[i],element);
       }
   }
 
   function statusChange() {
     var status = this.getAttribute("data");
-    console.log(oldPromotions[status].prStatus);
     if (oldPromotions[status].prStatus == "active") {
       oldPromotions[status].prStatus = "inactive";
     } else if (oldPromotions[status].prStatus == "inactive") {
@@ -126,5 +139,5 @@
       statusToggle[i].addEventListener('click', statusChange);
   }
 
-  console.log(statusToggle);
+  // console.log(statusToggle);
 })();

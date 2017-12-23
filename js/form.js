@@ -4,7 +4,7 @@
     var oldPromotions = JSON.parse(localStorage.getItem('PromotionsArray')) || [];
     // console.log(oldPromotions);
 	
-    function newPromotion( prName, prCode, prStatus, prAmount, prType, minPurch, saleItems, perStart, perStop, priceMin, priceMax, filType, filStyle, filRegion ) {
+    function newPromotion( prName, prCode, prStatus, prAmount, prType, minPurch, saleItems, perStart, perStop, priceMin, priceMax, filType, filStyle, filRegion, prMessage ) {
         this.prName = prName;
         this.prCode = prCode;
         this.prStatus = prStatus;
@@ -19,6 +19,7 @@
         this.filType = filType;
         this.filStyle = filStyle;
         this.filRegion = filRegion;
+        this.prMessage = prMessage;
     }
 
     function submitForm() {
@@ -52,6 +53,7 @@
         document.getElementById("filType").value = '';
         document.getElementById("filStyle").value = '';
         document.getElementById("filRegion").value = '';
+        document.getElementById("prMessage").value = '';
     }
 
     var button = document.getElementById("promoSave");
@@ -73,9 +75,10 @@
         var filStyle = document.getElementById("filStyle").value;
         var filType = document.getElementById("filType").value;
         var filRegion = document.getElementById("filRegion").value;
+        var prMessage = document.getElementById("prMessage").value;
         
         // post any new form data to the constructor object
-        var myNewPromotion = new newPromotion( prName, prCode, prStatus, prAmount, prType, minPurch, saleItems, perStart, perStop, priceMin, priceMax, filType, filStyle, filRegion );
+        var myNewPromotion = new newPromotion( prName, prCode, prStatus, prAmount, prType, minPurch, saleItems, perStart, perStop, priceMin, priceMax, filType, filStyle, filRegion, prMessage );
         
         // append myNewPromotion to existing array
         oldPromotions.push(myNewPromotion);
