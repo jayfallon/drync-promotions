@@ -11,7 +11,7 @@
       prName.setAttribute('class', 'promo-data name');
       prNameSpan = document.createElement('span');
       prNameLink = document.createElement('a');
-      prNameLink.setAttribute('href', 'view.html');
+      prNameLink.setAttribute('href', 'view.html?' + dataObject.prNumber);
       prNameSpan.append(prNameLink);
       prNameData = document.createTextNode(dataObject.prName);
       prNameLink.appendChild(prNameData);
@@ -56,13 +56,13 @@
       }
       element.appendChild(period);
       //type
-      type = document.createElement('div');
-      type.setAttribute('class', 'promo-data type');
-      typeSpan = document.createElement('span');
-      typeData = document.createTextNode(dataObject.filType);
-      typeSpan.append(typeData);
-      type.appendChild(typeSpan);
-      element.appendChild(type);
+      // type = document.createElement('div');
+      // type.setAttribute('class', 'promo-data type');
+      // typeSpan = document.createElement('span');
+      // typeData = document.createTextNode(dataObject.filType);
+      // typeSpan.append(typeData);
+      // type.appendChild(typeSpan);
+      // element.appendChild(type);
       //minimum
       minimum = document.createElement('div');
       minimum.setAttribute('class', 'promo-data min');
@@ -97,6 +97,14 @@
       statusDisSpan.append(statusDisImage);
       statusDis.appendChild(statusDisSpan);
       element.appendChild(statusDis);
+      //pmsgHead
+      pmsgHead = document.createElement('div');
+      pmsgHead.setAttribute('class', 'promo-heading message');
+      pmsgHeadSpan = document.createElement('span');
+      pmsgHeadData = document.createTextNode('Promotional Message');
+      pmsgHeadSpan.append(pmsgHeadData);
+      pmsgHead.appendChild(pmsgHeadSpan);
+      element.appendChild(pmsgHead);
       //prMessage
       prMessage = document.createElement('div');
       prMessage.setAttribute('class', 'promo-data message');
@@ -112,9 +120,9 @@
   if (oldPromotions != null) {
       for (var i = 0; i < oldPromotions.length; i++) {
           for (prStatus in oldPromotions[i]) {
-            if (oldPromotions[i][prStatus] === 'active') {
+            if (oldPromotions[i][prStatus] == 'active') {
               element = document.getElementById("promotions-grid-active");
-            } else if (oldPromotions[i][prStatus] === 'inactive') {
+            } else if (oldPromotions[i][prStatus] == 'inactive') {
               element = document.getElementById("promotions-grid-inactive");
             }
           }

@@ -60,55 +60,48 @@
                                 <a href="form.html">Add New Promotion</a>
                             </div>
                         </div>
-                        <div class="content-bg">
-                            <div class="view-title">
-                                <h3>All Argentine Reds</h3>
-                                <div class="promo-code"><span>ARG-18</span></div>
-                                <div class="promo-edit">
-                                    <a href="edit.html">Edit This Promotion</a>
-                                </div>
-                            </div>
+                        <div class="content-bg" id="content-bg">
                             <div class="view-grid">
                                 <div class="grid-heading status">Status</div>
-                                <div class="grid-data click"><span>Active<a href="view-inactive.html"><img src="img/state-active.svg" alt="Active"></a></span></div>
+                                <div class="grid-data click"><input type="checkbox" name="prStatus" id="prStatus" value="inactive"><label for="prStatus" id="status">Inactive</label></div>
                                 <div class="grid-heading"><span>Discount Amount</span></div>
                                 <div class="grid-heading"><span>Discount Type</span></div>
                                 <div class="grid-heading"><span>Minimum Purchase</span></div>
                                 <div class="grid-heading"><span>Sale Items</span></div>
-                                <div class="grid-data"><span>12%</span></div>
-                                <div class="grid-data"><span>Percentage</span></div>
-                                <div class="grid-data"><span>$100</span></div>
-                                <div class="grid-data"><span>Excluded</span></div>
+                                <div class="grid-data"><span id="disc">12%</span></div>
+                                <div class="grid-data"><span id="type">Percentage</span></div>
+                                <div class="grid-data"><span id="min">$100</span></div>
+                                <div class="grid-data"><span id="sales">Excluded</span></div>
                                 <div class="grid-heading period-title">Promotional Period<span></span></div>
                                 <div class="grid-heading price-title">Price Limits<span></span></div>
                                 <div class="grid-heading">Start<span></span></div>
                                 <div class="grid-heading">Stop<span></span></div>
                                 <div class="grid-heading">Min<span></span></div>
                                 <div class="grid-heading">Max<span></span></div>
-                                <div class="grid-data date-start"><span>01 Jan 2018</span></div>
-                                <div class="grid-data date-end"><span>31 Jan 2018</span>
+                                <div class="grid-data date-start"><span id="start">01 Jan 2018</span></div>
+                                <div class="grid-data date-end"><span id="stop">31 Jan 2018</span>
                                 </div>
-                                <div class="grid-data price-min"><span>$10</span></div>
-                                <div class="grid-data price-max"><span>$250</span>
+                                <div class="grid-data price-min"><span id="pmin">$10</span></div>
+                                <div class="grid-data price-max"><span id="pmax">$250</span>
                                 </div>
                                 <div class="grid-heading applicable-stores"><span>Applicable Stores</span></div>
                                 <div class="grid-data all-stores"><span>All Stores</span><a href="" class="store-link">See All</a></div>
                                 <div class="grid-heading"><span>Type</span></div>
                                 <div class="grid-heading"><span>Style</span></div>
                                 <div class="grid-heading type-region"><span>Region</span></div>
-                                <div class="grid-data"><span>Wine</span></div>
-                                <div class="grid-data"><span>Red</span></div>
-                                <div class="grid-data type-region"><span>Argentina</span></div>
-                                <div class="grid-heading current-display"><span>Current Display</span></div>
-                                <div class="grid-data display-image"><span>
-                                    <img src="img/argetine-reds.png" alt="Promo Image" width="250">
-                                </span></div>
+                                <div class="grid-data"><span id="type">Wine</span></div>
+                                <div class="grid-data"><span id="style">Red</span></div>
+                                <div class="grid-data type-region"><span id="region">Argentina</span></div>
+                                <div class="grid-heading promo-message"><span id="message">Promotion Message</span></div>
+                                <div class="grid-data promo-message">
+                                    <span>Message Goes Here</span>
+                                </div>
                             </div>
                         </div>
                     </div>
         		</main>
         	</div>
         </div>
-        <script src="../js/main.js"></script>
+        <script src="js/view.js"></script>
     </body>
 </html>

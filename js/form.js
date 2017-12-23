@@ -1,10 +1,17 @@
 (function(){
+
+    $('[data-toggle="datepicker"]').datepicker({
+        format: 'm/d/yy',
+        autoHide: true,
+        zIndex: 2048,
+    });
     
     // retrieve old Promotions and populate array, otherwise create empty
     var oldPromotions = JSON.parse(localStorage.getItem('PromotionsArray')) || [];
     // console.log(oldPromotions);
 	
-    function newPromotion( prName, prCode, prStatus, prAmount, prType, minPurch, saleItems, perStart, perStop, priceMin, priceMax, filType, filStyle, filRegion, prMessage ) {
+    function newPromotion( prNumber, prName, prCode, prStatus, prAmount, prType, minPurch, saleItems, perStart, perStop, priceMin, priceMax, filType, filStyle, filRegion, prMessage ) {
+        this.prNumber = prNumber;
         this.prName = prName;
         this.prCode = prCode;
         this.prStatus = prStatus;
@@ -26,17 +33,6 @@
         location.assign("view.html");
     }
 
-    prStatus.addEventListener('click', function(){
-        var status = document.getElementById('status');
-        if (this.checked === true) {
-            this.setAttribute('value', 'active');
-            status.innerHTML = "Active";
-        } else {
-            this.setAttribute('value', 'inactive');
-            status.innerHTML = "Inactive";
-        }
-    })
-
     // clear the form values and make ready to start over
     function clearForm() {
         document.getElementById("prName").value = '';
@@ -56,10 +52,30 @@
         document.getElementById("prMessage").value = '';
     }
 
+    prStatus.addEventListener('click', function(){
+        console.log('working');
+        var status = document.getElementById('status');
+        if (this.checked == true) {
+            this.setAttribute('value', 'active');
+            status.innerHTML = "Active";
+        } else if (this.checked != true){
+            this.setAttribute('value', 'inactive');
+            status.innerHTML = "Inactive";
+        }
+    })
+
+    var ID = function () {
+      // Math.random should be unique because of its seeding algorithm.
+      // Convert it to base 36 (numbers + letters), and grab the first 9 characters
+      // after the decimal.
+      return Math.random().toString(36).substr(2, 9);
+    };
+
     var button = document.getElementById("promoSave");
 
     button.onclick = function(){
-            
+        //Generate unique url
+        var prNumber = ID();
         //Get values from the web form
         var prName = document.getElementById("prName").value;
         var prCode = document.getElementById("prCode").value;
@@ -78,7 +94,7 @@
         var prMessage = document.getElementById("prMessage").value;
         
         // post any new form data to the constructor object
-        var myNewPromotion = new newPromotion( prName, prCode, prStatus, prAmount, prType, minPurch, saleItems, perStart, perStop, priceMin, priceMax, filType, filStyle, filRegion, prMessage );
+        var myNewPromotion = new newPromotion( prNumber, prName, prCode, prStatus, prAmount, prType, minPurch, saleItems, perStart, perStop, priceMin, priceMax, filType, filStyle, filRegion, prMessage );
         
         // append myNewPromotion to existing array
         oldPromotions.push(myNewPromotion);
