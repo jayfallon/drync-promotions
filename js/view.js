@@ -62,92 +62,226 @@
 
     viewGrid.appendChild(prStatus);
 
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Discount Amount');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Discount Type');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Minimum Purchase');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Sale Items');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+    //prAmount
+    prAmount = document.createElement('div');
+    prAmount.setAttribute('class', 'grid-data disc');
+    prAmountSpan = document.createElement('span');
+    if (dataObject.prType == 'amount') {
+      prAmountData = document.createTextNode('$'+dataObject.prAmount);
+      prAmountSpan.append(prAmountData);
+    } else if (dataObject.prType == 'percent') {
+      prAmountData = document.createTextNode(dataObject.prAmount+'%');
+      prAmountSpan.append(prAmountData);
+    } else if (dataObject.prType == 'frees') {
+      prAmountData = document.createTextNode('Free Shipping');
+      prAmountSpan.append(prAmountData);
+    } else if (dataObject.prType == 'freed') {
+      prAmountData = document.createTextNode('Free Delivery');
+      prAmountSpan.append(prAmountData);
+    }
+    prAmount.appendChild(prAmountSpan);
+    viewGrid.appendChild(prAmount);
+    // discType
+    discType = document.createElement('div');
+    discType.setAttribute('class', 'grid-data type');
+    discTypeSpan = document.createElement('span');
+    discTypeData = document.createTextNode(dataObject.prType);
+    discTypeSpan.append(discTypeData);
+    discType.appendChild(discTypeSpan);
+    viewGrid.appendChild(discType);
+    // minimum
+    minimum = document.createElement('div');
+    minimum.setAttribute('class', 'grid-data min');
+    if (dataObject.priceMin) {
+      minimumSpan = document.createElement('span');
+      minimumData = document.createTextNode('$'+dataObject.priceMin);
+      minimumSpan.append(minimumData);
+      minimum.appendChild(minimumSpan);
+    }
+    viewGrid.appendChild(minimum);
+    // saleItems
+    saleItems = document.createElement('div');
+    saleItems.setAttribute('class', 'grid-data type');
+    saleItemsSpan = document.createElement('span');
+    saleItemsData = document.createTextNode(dataObject.saleItems);
+    saleItemsSpan.append(saleItemsData);
+    saleItems.appendChild(saleItemsSpan);
+    viewGrid.appendChild(saleItems);
+
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading period-title');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Promotional Period');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading price-title');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Price Limits');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Start');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Stop');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Min');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Max');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+    // //period
+    period = document.createElement('div');
+    period.setAttribute('class', 'grid-data period');
+    if (dataObject.perStart && dataObject.perStop) {
+      periodSpan = document.createElement('span');
+      periodData = document.createTextNode(dataObject.perStart);
+      periodSpan.append(periodData);
+      period.appendChild(periodSpan);
+    }
+    viewGrid.appendChild(period);
+    period = document.createElement('div');
+    period.setAttribute('class', 'grid-data period');
+    if (dataObject.perStart && dataObject.perStop) {
+      periodSpan = document.createElement('span');
+      periodData = document.createTextNode(dataObject.perStop);
+      periodSpan.append(periodData);
+      period.appendChild(periodSpan);
+    }
+    viewGrid.appendChild(period);
+
+    // minimum
+    minimum = document.createElement('div');
+    minimum.setAttribute('class', 'grid-data min');
+    if (dataObject.priceMin) {
+      minimumSpan = document.createElement('span');
+      minimumData = document.createTextNode('$'+dataObject.priceMin);
+      minimumSpan.append(minimumData);
+      minimum.appendChild(minimumSpan);
+    }
+    viewGrid.appendChild(minimum);
+    // maximum
+    maximum = document.createElement('div');
+    maximum.setAttribute('class', 'grid-data max');
+    if (dataObject.priceMax) {
+      maximumSpan = document.createElement('span');
+      maximumData = document.createTextNode('$'+dataObject.priceMax);
+      maximumSpan.append(maximumData);
+      maximum.appendChild(maximumSpan);
+    }
+    viewGrid.appendChild(maximum);
+
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Type');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Style');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading type-region');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Region');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+    // type
+    type = document.createElement('div');
+    type.setAttribute('class', 'grid-data type');
+    typeSpan = document.createElement('span');
+    typeData = document.createTextNode(dataObject.filType);
+    typeSpan.append(typeData);
+    type.appendChild(typeSpan);
+    viewGrid.appendChild(type);
+    type = document.createElement('div');
+    type.setAttribute('class', 'grid-data type');
+    typeSpan = document.createElement('span');
+    typeData = document.createTextNode(dataObject.filStyle);
+    typeSpan.append(typeData);
+    type.appendChild(typeSpan);
+    viewGrid.appendChild(type);
+    type = document.createElement('div');
+    type.setAttribute('class', 'grid-data type');
+    typeSpan = document.createElement('span');
+    typeData = document.createTextNode(dataObject.filregion);
+    typeSpan.append(typeData);
+    type.appendChild(typeSpan);
+    viewGrid.appendChild(type);
+
+    discH = document.createElement('div');
+    discH.setAttribute('class', 'grid-heading promo-message');
+    discHSp = document.createElement('span');
+    discTx = document.createTextNode('Promotion Message');
+    discHSp.appendChild(discTx);
+    discH.appendChild(discHSp);
+    viewGrid.appendChild(discH);
+    // //prMessage
+    prMessage = document.createElement('div');
+    prMessage.setAttribute('class', 'grid-data promo-message');
+    prMessageSpan = document.createElement('span');
+    prMessageData = document.createTextNode(dataObject.prMessage);
+    prMessageSpan.append(prMessageData);
+    prMessage.appendChild(prMessageSpan);
+    viewGrid.appendChild(prMessage);
 
     element.appendChild(viewGrid);
-
-    //statusDis
-    // statusDis = document.createElement('div');
-    // statusDis.setAttribute('class', 'grid-data click');
-    // statusDisSpan = document.createElement('span');
-    // statusDisImage = document.createElement('img');
-    // statusDisImage.setAttribute('class', 'status-toggle');
-    // statusDisImage.setAttribute('data', [i]);
-    // if (dataObject.prStatus === 'active') {
-    //   statusDisImage.setAttribute('src', '/img/state-active.svg');
-    // } else {
-    //   statusDisImage.setAttribute('src', '/img/state-inactive.svg');
-    // }
-    // statusDisImage.setAttribute('alt', 'Promotion Status');
-    // statusDisSpan.append(statusDisImage);
-    // statusDis.appendChild(statusDisSpan);
-    // element.appendChild(statusDis);
-    // prAmountSpan = document.createElement('span');
-    // if (dataObject.prType == 'amount') {
-    //   prAmountData = document.createTextNode('$'+dataObject.prAmount);
-    //   prAmountSpan.append(prAmountData);
-    // } else if (dataObject.prType == 'percent') {
-    //   prAmountData = document.createTextNode(dataObject.prAmount+'%');
-    //   prAmountSpan.append(prAmountData);
-    // } else if (dataObject.prType == 'frees') {
-    //   prAmountData = document.createTextNode('Free Shipping');
-    //   prAmountSpan.append(prAmountData);
-    // } else if (dataObject.prType == 'freed') {
-    //   prAmountData = document.createTextNode('Free Delivery');
-    //   prAmountSpan.append(prAmountData);
-    // }
-    // prAmount.appendChild(prAmountSpan);
-    // element.appendChild(prAmount);
-
-
-
-    
-    
-   
-    // //period
-    // period = document.createElement('div');
-    // period.setAttribute('class', 'promo-data period');
-    // if (dataObject.perStart && dataObject.perStop) {
-    //   periodSpan = document.createElement('span');
-    //   periodData = document.createTextNode(dataObject.perStart + ' - ' + dataObject.perStop);
-    //   periodSpan.append(periodData);
-    //   period.appendChild(periodSpan);
-    // }
-    // element.appendChild(period);
-    // type
-    // type = document.createElement('div');
-    // type.setAttribute('class', 'promo-data type');
-    // typeSpan = document.createElement('span');
-    // typeData = document.createTextNode(dataObject.filType);
-    // typeSpan.append(typeData);
-    // type.appendChild(typeSpan);
-    // element.appendChild(type);
-    // minimum
-    // minimum = document.createElement('div');
-    // minimum.setAttribute('class', 'promo-data min');
-    // if (dataObject.priceMin) {
-    //   minimumSpan = document.createElement('span');
-    //   minimumData = document.createTextNode('$'+dataObject.priceMin);
-    //   minimumSpan.append(minimumData);
-    //   minimum.appendChild(minimumSpan);
-    // }
-    // element.appendChild(minimum);
-    
-    // //pmsgHead
-    // pmsgHead = document.createElement('div');
-    // pmsgHead.setAttribute('class', 'promo-heading message');
-    // pmsgHeadSpan = document.createElement('span');
-    // pmsgHeadData = document.createTextNode('Promotional Message');
-    // pmsgHeadSpan.append(pmsgHeadData);
-    // pmsgHead.appendChild(pmsgHeadSpan);
-    // element.appendChild(pmsgHead);
-    // //prMessage
-    // prMessage = document.createElement('div');
-    // prMessage.setAttribute('class', 'promo-data message');
-    // prMessageSpan = document.createElement('span');
-    // prMessageData = document.createTextNode(dataObject.prMessage);
-    // prMessageSpan.append(prMessageData);
-    // prMessage.appendChild(prMessageSpan);
-    // element.appendChild(prMessage);
   }
 
   var urlParams = new URLSearchParams(window.location.search);

@@ -26,7 +26,6 @@
       prCode.appendChild(prCodeSpan);
       element.appendChild(prCode);
       //prAmount
-      // console.log(dataObject.prType);
       prAmount = document.createElement('div');
       prAmount.setAttribute('class', 'promo-data disc');
       prAmountSpan = document.createElement('span');
@@ -55,14 +54,6 @@
         period.appendChild(periodSpan);
       }
       element.appendChild(period);
-      //type
-      // type = document.createElement('div');
-      // type.setAttribute('class', 'promo-data type');
-      // typeSpan = document.createElement('span');
-      // typeData = document.createTextNode(dataObject.filType);
-      // typeSpan.append(typeData);
-      // type.appendChild(typeSpan);
-      // element.appendChild(type);
       //minimum
       minimum = document.createElement('div');
       minimum.setAttribute('class', 'promo-data min');

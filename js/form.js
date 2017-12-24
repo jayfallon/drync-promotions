@@ -29,10 +29,6 @@
         this.prMessage = prMessage;
     }
 
-    function submitForm() {
-        location.assign("view.html");
-    }
-
     // clear the form values and make ready to start over
     function clearForm() {
         document.getElementById("prName").value = '';
@@ -73,6 +69,10 @@
 
     var button = document.getElementById("promoSave");
 
+    function submitForm(prNumber) {
+        location.assign("view.html?" + prNumber);
+    }
+
     button.onclick = function(){
         //Generate unique url
         var prNumber = ID();
@@ -102,7 +102,7 @@
         // persist your newly appended array to a localStorage object
         localStorage.setItem('PromotionsArray', JSON.stringify(oldPromotions));
         // submit to view page
-        submitForm();
+        submitForm(prNumber);
         // clear the form
         clearForm();
         // stop the form behavior
