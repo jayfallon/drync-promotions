@@ -348,7 +348,10 @@ main {
 	justify-content: flex-end;
 }
 
-.promo-data.status, #status {
+.promo-data.status {
+	text-transform: capitalize;
+}
+#status {
 	font-size: 1.8rem;
 	text-transform: capitalize;
 }
