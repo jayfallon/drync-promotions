@@ -2,6 +2,11 @@
   // retrieve old Promotions and populate array, otherwise create empty
   var oldPromotions = JSON.parse(localStorage.getItem('PromotionsArray')) || [];
   console.log(oldPromotions);
+
+  if (oldPromotions.length == 0) {
+    oldPromotions = [{"prNumber":"itdz5rrgcxoxo","prName":"All Argentine Reds","prCode":"ARG18","prStatus":"active","prAmount":"10","prType":"percent","minPurch":"10","saleItems":"included","perStart":"12/26/17","perStop":"12/27/17","priceMin":"10","priceMax":"100","filType":"wine","filStyle":"red","filRegion":"argentina","prMessage":"Save 10% on all Argentine Reds with a $10 purchase"},{"prNumber":"itdz5rrgctest","prName":"Spanish Rioja Special","prCode":"RIO17","prStatus":"inactive","prAmount":"12","prType":"percent","minPurch":"25","saleItems":"included","perStart":"12/26/17","perStop":"12/27/17","priceMin":"10","priceMax":"100","filType":"wine","filStyle":"red","filRegion":"spain","prMessage":"Save 12% on Rioja!!"}]
+  }
+
   var contentBg = document.getElementById('content-bg');
   var element = "";
 

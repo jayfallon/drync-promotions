@@ -64,7 +64,8 @@
                                 <div class="view-grid">
                                     <div class="grid-heading status">Status</div>
                                     <div class="grid-data click" id="prStatusW">
-                                        
+                                        <input type="checkbox" id="prStatusIn">
+                                        <label for="prStatusIn" id="status" class="edit-form"></label>
                                     </div>
                                     <div class="grid-heading"><span>Discount Amount</span></div>
                                     <div class="grid-heading"><span>Discount Type</span></div>
@@ -81,7 +82,10 @@
                                         </select>
                                     </div>
                                     <div class="grid-data"><input type="text" value="" id="minPurch"></div>
-                                    <div class="grid-data excluded" id="saleItems"></div>
+                                    <div class="grid-data excluded" id="saleItems">
+                                        <input type="checkbox" id="saleItemsIn" checked>
+                                        <label for="saleItemsIn" class="edit-form" id="saleLabel">Included</label>
+                                    </div>
                                     <div class="grid-heading period-title">Promotional Period<span></span></div>
                                     <div class="grid-heading price-title">Price Limits<span></span></div>
                                     <div class="grid-heading"><span>Start</span></div>
@@ -95,7 +99,54 @@
                                     <div class="grid-data price-max"><input type="text" value="" id="priceMax">
                                     </div>
                                     <div class="grid-heading applicable-stores"><span>Applicable Stores</span></div>
-                                    <div class="grid-data all-stores"><span class="edit-form"><input type="checkbox" checked>All Stores</span><a href="" class="store-link">See All</a></div>
+                                    <div class="grid-data all-stores"><span class="edit-form">
+                                        <input type="checkbox" checked>All Stores</span>
+                                        <span class="store-link">See All</span>
+                                        <div class="all-stores-view" id="all-stores-view">
+                                            <div id="all-stores-wrapper">
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store01</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store02</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store03</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store04</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store05</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store06</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store07</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store08</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store09</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store10</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store11</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store12</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store13</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store14</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store15</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store16</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store17</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store18</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store19</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store20</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store21</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store22</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store23</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store24</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store25</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store26</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store27</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store28</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store29</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store30</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store31</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store32</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store33</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store34</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store35</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store36</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store37</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store38</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store39</span></div>
+                                                <div class="all-stores-data"><input type="checkbox" checked=""><span>store40</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="grid-heading"><span>Style</span></div>
                                     <div class="grid-heading"><span>Type</span></div>
                                     <div class="grid-heading type-region"><span>Region</span></div>
@@ -143,7 +194,7 @@
         		</main>
         	</div>
         </div>
-        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="js/jquery/dist/jquery.min.js"></script>
         <script src="js/datepicker.min.js"></script>
         <script src="js/nav.js"></script>
         <script src="js/edit.js"></script>

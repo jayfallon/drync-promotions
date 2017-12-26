@@ -7,6 +7,7 @@
   var viewTitle = "";
 
   function writeRowToPage(dataObject, element) {
+
     //view-title
     viewTitle = document.createElement('div');
     viewTitle.setAttribute('class', 'view-title');
@@ -225,6 +226,25 @@
     }
     viewGrid.appendChild(maximum);
 
+    allStoresW = document.createElement('div');
+    allStoresW.setAttribute('class', 'grid-data all-stores');
+    allStoresSp = document.createElement('span');
+    allStoresSp.setAttribute('class', 'edit-form');
+    allStoresIn = document.createElement('input');
+    allStoresIn.setAttribute('type', 'checkbox');
+    allStoresIn.checked = true;
+    allStoresSp.appendChild(allStoresIn);
+    allStoresTx = document.createTextNode('All Stores');
+    allStoresSp.appendChild(allStoresTx);
+    allStoresW.appendChild(allStoresSp);
+    allStoresLk = document.createElement('a');
+    allStoresLk.setAttribute('href', '');
+    allStoresLk.setAttribute('class', 'store-link');
+    allStoresTx = document.createTextNode('See All');
+    allStoresLk.appendChild(allStoresTx);
+    allStoresW.appendChild(allStoresLk);
+    viewGrid.appendChild(allStoresW);
+
     discH = document.createElement('div');
     discH.setAttribute('class', 'grid-heading');
     discHSp = document.createElement('span');
@@ -322,5 +342,4 @@
   var statusToggle = document.getElementById("prStatus");
   statusToggle.addEventListener('click', statusChange);
 
-  // console.log(statusToggle);
 })();

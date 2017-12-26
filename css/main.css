@@ -246,6 +246,11 @@ main {
 	100% {opacity: 1;}
 }
 
+@keyframes Toggler {
+	0% {display: none;}
+	100% {display: inline;}
+}
+
 .content-bg {
 	background-color: #fff;
   margin-bottom: 12px;
@@ -344,6 +349,7 @@ main {
 }
 
 .promo-data.status, #status {
+	font-size: 1.8rem;
 	text-transform: capitalize;
 }
 
@@ -507,9 +513,12 @@ main {
 	grid-column-end: 5;
 }
 
-.grid-data a.store-link {
+.grid-data span.store-link, a.store-link {
 	margin-left: 8px;
+	color: #37BAE6;
 	font-size: 1rem;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .grid-data.type {
@@ -554,10 +563,34 @@ main {
 }
 
 .edit-form {
-	font-size: 18px;
+	font-size: 18px !important;
 	text-transform: capitalize;
 }
 
 .edit-form  input {
 	margin-right: 6px;
+}
+
+#all-stores-view {
+	display: none;
+}
+
+#all-stores-wrapper {
+	padding: 12px;
+	border: 1px solid #dfdfdf;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: auto;
+	grid-row-gap: 9px;
+}
+
+.all-stores-data {
+	font-size: 18px;
+	display: flex;
+	align-items: center;
+}
+
+.all-stores-data span {
+	margin-left: 4px;
+	text-transform: capitalize;
 }

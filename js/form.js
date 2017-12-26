@@ -9,6 +9,18 @@
     // retrieve old Promotions and populate array, otherwise create empty
     var oldPromotions = JSON.parse(localStorage.getItem('PromotionsArray')) || [];
     // console.log(oldPromotions);
+    
+    $('span.store-link').click(function(){
+        var link = $(this);
+        var view = $('#all-stores-view');
+        $('#all-stores-view').slideToggle(function() {
+            if ($(this).is(':visible')) {
+                 link.text('Hide All');
+            } else {
+                 link.text('See All');
+            }
+        });
+    });
 	
     function newPromotion( prNumber, prName, prCode, prStatus, prAmount, prType, minPurch, saleItems, perStart, perStop, priceMin, priceMax, filType, filStyle, filRegion, prMessage ) {
         this.prNumber = prNumber;

@@ -4,6 +4,18 @@
   var oldPromotions = JSON.parse(localStorage.getItem('PromotionsArray')) || [];
   console.log(oldPromotions);
 
+  $('span.store-link').click(function(){
+      var link = $(this);
+      var view = $('#all-stores-view');
+      $('#all-stores-view').slideToggle(function() {
+          if ($(this).is(':visible')) {
+               link.text('Hide All');
+          } else {
+               link.text('See All');
+          }
+      });
+  });
+
   var element = document.getElementById('content-bg');
   var prName = document.getElementById('prName');
   var prCode = document.getElementById('prCode');
@@ -21,44 +33,31 @@
   var filRegion = document.getElementById("filRegion");
   var prMessage = document.getElementById("prMessage");
   var prStatusW = document.getElementById("prStatusW");
+  var saleItemsIn = document.getElementById("saleItemsIn");
+  var saleLabel = document.getElementById("saleLabel");
+  var prStatusIn = document.getElementById("prStatusIn");
+  var status = document.getElementById("status");
 
   function writeRowToPage(dataObject) {
     prName.value = dataObject.prName;
     prCode.value = dataObject.prCode;
-    // prStatus.value = dataObject.prStatus;
-    prStatusIn = document.createElement('input');
-    prStatusIn.setAttribute('type', 'checkbox');
-    prStatusIn.setAttribute('id', 'prStatusIn');
     prStatusIn.setAttribute('data', [i]);
     if (dataObject.prStatus == "active") {
       prStatusIn.checked = true;
+      status.innerHTML = "Active";
+    } else {
+      status.innerHTML = "Inactive";
     }
-    prStatusW.append(prStatusIn);
-    prStatusLabel = document.createElement('label');
-    prStatusLabelTx = document.createTextNode(dataObject.prStatus);
-    prStatusLabel.appendChild(prStatusLabelTx);
-    prStatusLabel.setAttribute('for', 'prStatus');
-    prStatusLabel.setAttribute('id', 'status');
-    prStatusW.appendChild(prStatusLabel);
 
     prAmount.value = dataObject.prAmount;
     prType.value = dataObject.prType;
     minPurch.value = dataObject.minPurch;
-
-    saleItemsIn = document.createElement('input');
-    saleItemsIn.setAttribute('type', 'checkbox');
-    saleItemsIn.setAttribute('id', 'saleItemsIn');
     if (dataObject.saleItems == "included") {
       saleItemsIn.checked = true;
+      saleLabel.innerHTML = "Included";
+    } else {
+      saleLabel.innerHTML = "Excluded";
     }
-    saleItems.append(saleItemsIn);
-    saleItemsLabel = document.createElement('label');
-    saleItemsLabelTx = document.createTextNode(dataObject.saleItems);
-    saleItemsLabel.appendChild(saleItemsLabelTx);
-    saleItemsLabel.setAttribute('for', 'saleItems');
-    saleItemsLabel.setAttribute('class', 'edit-form');
-    saleItemsLabel.setAttribute('id', 'saleLabel');
-    saleItems.appendChild(saleItemsLabel);
     perStart.value = dataObject.perStart;
     perStop.value = dataObject.perStop;
     priceMin.value = dataObject.priceMin;
@@ -91,39 +90,11 @@
     }
   }
 
-  function statusChange() {
-    var status = this.getAttribute("data");
-    if (oldPromotions[status].prStatus == "active") {
-      oldPromotions[status].prStatus = "inactive";
-    } else if (oldPromotions[status].prStatus == "inactive") {
-      oldPromotions[status].prStatus = "active";
-    }
-    localStorage.setItem('PromotionsArray', JSON.stringify(oldPromotions));
-    location.assign("/view.html?" + chisme);
-  }
-
-  var statusToggle = document.getElementById("prStatusIn");
-  statusToggle.addEventListener('click', statusChange);
-
   $('[data-toggle="datepicker"]').datepicker({
       format: 'm/d/yy',
       autoHide: true,
       zIndex: 2048,
   });
-
-  saleItemsVal = '';
-  var saleItemsIn = document.getElementById("saleItemsIn");
-
-  saleItemsIn.addEventListener('change', function(){
-      var status = document.getElementById('saleLabel');
-      if (this.checked == true) {
-          saleItemsVal = "included";
-          status.innerHTML = "Included";
-      } else if (this.checked != true){
-          saleItemsVal = "excluded";
-          status.innerHTML = "Excluded";
-      }
-  })
 
   var button = document.getElementById("promoSave");
   // need to find and fix this
@@ -131,7 +102,6 @@
   function submitForm() {
     currentElem.prName = document.getElementById("prName").value;
     currentElem.prCode = document.getElementById("prCode").value;
-    currentElem.prStatus = document.getElementById("prStatus").value;
     currentElem.prAmount = document.getElementById("prAmount").value;
     currentElem.prType = document.getElementById("prType").value;
     currentElem.minPurch = document.getElementById("minPurch").value;
@@ -166,6 +136,36 @@
     location.assign("/");
   });
 
+  saleItemsVal = '';
 
+  saleItemsIn.addEventListener('change', function(){
+      var status = document.getElementById('saleLabel');
+      if (this.checked == true) {
+          saleItemsVal = "included";
+          status.innerHTML = "Included";
+      } else if (this.checked != true){
+          saleItemsVal = "excluded";
+          status.innerHTML = "Excluded";
+      }
+  })
+
+  function statusChange() {
+    var status = this.getAttribute("data");
+    if (oldPromotions[status].prStatus == "active") {
+      oldPromotions[status].prStatus = "inactive";
+    } else if (oldPromotions[status].prStatus == "inactive") {
+      oldPromotions[status].prStatus = "active";
+    }
+    alert(oldPromotions[status].prStatus);
+    localStorage.setItem('PromotionsArray', JSON.stringify(oldPromotions));
+    location.assign("/edit.html?" + chisme);
+  }
+
+  prStatusIn.addEventListener('click', statusChange);
+
+  window.onerror = function(msg, url, linenumber) {
+      alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+      return true;
+  }
 
 })();
