@@ -30,11 +30,17 @@ button {
   padding: 6px 12px;
   font-size: 15px;
   line-height: 1.428571429;
-  border-radius: 4px;
+  border-radius: 1px;
   background-color: red;
 }
 
+.save-promo {
+	display: flex;
+	justify-content: center;
+}
+
 .save-promo button {
+	padding: 6px 40px;
 	color: #fff;
 	background-color: #7BC219;
 }
@@ -221,12 +227,23 @@ main {
 .content-wrapper {
 	padding-left:24px;
 	width:902px;
+	-webkit-animation-name: FadeIn;
+	animation: FadeIn;
+	-webkit-animation-duration: 600ms;
+	animation-duration: 600ms;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
 }
 
 .content-wrapper h2 {
 	margin: 0;
 	padding: 20px 0;
 	font-size: 32px;
+}
+
+@keyframes FadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
 }
 
 .content-bg {
@@ -250,6 +267,14 @@ main {
 .content-heading .add-new {
 	margin-right: 12px;
 	flex: 0 0 auto;
+}
+
+.status-warning {
+	padding: 0 12px 12px;
+}
+
+#promotions-grid-active, #promotions-grid-inactive {
+	visibility: hidden;
 }
 
 .promotions-grid {
@@ -318,7 +343,7 @@ main {
 	justify-content: flex-end;
 }
 
-.promo-data.status {
+.promo-data.status, #status {
 	text-transform: capitalize;
 }
 
@@ -352,10 +377,10 @@ main {
 	border: 0;
 }
 
-.promo-data.message:before {
+.promo-data.message:before, .grid-data.show-quote span:before {
     content: open-quote;
 }
-.promo-data.message:after {
+.promo-data.message:after, .grid-data.show-quote span:after {
     content: close-quote;
 }
 
@@ -389,6 +414,16 @@ main {
 	padding-right: 12px;
 	text-align: right;
 	flex: 1 0 auto;
+}
+
+.delete-wrapper {
+	text-align: right;
+	grid-column-start: 3;
+	grid-column-end: 5;
+}
+
+.delete-wrapper button {
+	color: #fff;
 }
 
 .view-grid {
@@ -520,6 +555,7 @@ main {
 
 .edit-form {
 	font-size: 18px;
+	text-transform: capitalize;
 }
 
 .edit-form  input {

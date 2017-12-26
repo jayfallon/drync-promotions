@@ -44,17 +44,7 @@
                         </div>
         			</div>
         		</header>
-        		<nav role="nav">
-                    <div class="nav-wrapper">
-                        <div class="nav-item-01"><a href="">Dashboard</a></div>
-                        <div class="nav-item-02"><a href="">Order Management</a></div>
-                        <div class="nav-item-03"><a href="">Reporting</a></div>
-                        <div class="nav-item-04"><a href="">Marketing</a></div>
-                        <div class="nav-item-05 active"><a href="index.html">Promotions</a></div>
-                        <div class="nav-item-06"><a href="">Store</a></div>
-                        <div class="nav-item-07"><a href="">Help</a></div>
-                    </div>
-                </nav>
+        		<nav role="nav" id="nav"></nav>
         		<main role="main">
                     <div class="content-wrapper">
                         <div class="content-heading">
@@ -70,7 +60,10 @@
                                 </div>
                                 <div class="view-grid">
                                     <div class="grid-heading status">Status</div>
-                                    <div class="grid-data click"><input type="checkbox" name="prStatus" id="prStatus" value="inactive"><label for="prStatus" id="status">Inactive</label></div>
+                                    <div class="grid-data click">
+                                        <input type="checkbox" name="prStatus" id="prStatus" value="active" checked>
+                                        <label for="prStatus" id="status">Active</label>
+                                    </div>
                                     <div class="grid-heading"><span>Discount Amount</span></div>
                                     <div class="grid-heading"><span>Discount Type</span></div>
                                     <div class="grid-heading"><span>Minimum Purchase</span></div>
@@ -78,7 +71,7 @@
                                     <div class="grid-data"><input type="text" value="" id="prAmount"></div>
                                     <div class="grid-data">
                                         <select name="" id="prType">
-                                            <option>Choose Type</option>
+                                            <option value="">Choose Type</option>
                                             <option value="amount">Amount</option>
                                             <option value="percent">Percentage</option>
                                             <option value="frees">Free Shipping</option>
@@ -86,33 +79,35 @@
                                         </select>
                                     </div>
                                     <div class="grid-data"><input type="text" value="" id="minPurch"></div>
-                                    <div class="grid-data excluded"><input type="checkbox" id="saleItems"><label for="saleItems" class="edit-form">Excluded</label></div>
+                                    <div class="grid-data excluded">
+                                        <input type="checkbox" id="saleItems" checked>
+                                        <label for="saleItems" class="edit-form" id="saleLabel">Included</label>
+                                    </div>
                                     <div class="grid-heading period-title">Promotional Period<span></span></div>
                                     <div class="grid-heading price-title">Price Limits<span></span></div>
                                     <div class="grid-heading"><span>Start</span></div>
                                     <div class="grid-heading"><span>Stop</span></div>
                                     <div class="grid-heading"><span>Min</span></div>
                                     <div class="grid-heading"><span>Max</span></div>
-                                    <div class="grid-data date-start"><input type="text" value="" data-toggle="datepicker" id="perStart"></div>
-                                    <div class="grid-data date-end"><input type="text" value="" data-toggle="datepicker" id="perStop">
+                                    <div class="grid-data date-start">
+                                        <input type="text" value="" data-toggle="datepicker" id="perStart">
                                     </div>
-                                    <div class="grid-data price-min"><input type="text" value="" id="priceMin"></div>
-                                    <div class="grid-data price-max"><input type="text" value="" id="priceMax">
+                                    <div class="grid-data date-end">
+                                        <input type="text" value="" data-toggle="datepicker" id="perStop">
+                                    </div>
+                                    <div class="grid-data price-min">
+                                        <input type="text" value="" id="priceMin">
+                                    </div>
+                                    <div class="grid-data price-max">
+                                        <input type="text" value="" id="priceMax">
                                     </div>
                                     <div class="grid-heading applicable-stores"><span>Applicable Stores</span></div>
-                                    <div class="grid-data all-stores"><span class="edit-form"><input type="checkbox" checked>All Stores</span><a href="" class="store-link">See All</a></div>
+                                    <div class="grid-data all-stores"><span class="edit-form">
+                                        <input type="checkbox" checked>All Stores</span>
+                                        <a href="" class="store-link">See All</a></div>
                                     <div class="grid-heading"><span>Style</span></div>
                                     <div class="grid-heading"><span>Type</span></div>
                                     <div class="grid-heading type-region"><span>Region</span></div>
-                                    <div class="grid-data">
-                                        <select name="" id="filStyle">
-                                            <option value="">Choose Style</option>
-                                            <option value="">Red</option>
-                                            <option value="">White</option>
-                                            <option value="">Rose</option>
-                                            <option value="">Chianti</option>
-                                        </select>
-                                    </div>
                                     <div class="grid-data">
                                         <select name="" id="filType">
                                             <option value="">Choose Type</option>
@@ -122,9 +117,23 @@
                                             <option value="extras">Extras</option>
                                         </select>
                                     </div>
+                                    <div class="grid-data">
+                                        <select name="" id="filStyle">
+                                            <option value="">Choose Style</option>
+                                            <option value="red">Red</option>
+                                            <option value="white">White</option>
+                                            <option value="rose">Ros&#233;</option>
+                                            <option value="sparkling">Sparkling</option>
+                                        </select>
+                                    </div>
                                     <div class="grid-data type-region">
                                         <select name="" id="filRegion">
                                             <option value="">Choose Region</option>
+                                            <option value="argentina">Argentina</option>
+                                            <option value="australia">Australia</option>
+                                            <option value="france">France</option>
+                                            <option value="italy">Italy</option>
+                                            <option value="spain">Spain</option>
                                         </select>
                                     </div>
                                     <div class="grid-heading promo-message"><span>Promotion Message</span></div>
@@ -145,6 +154,7 @@
         </div>
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="js/datepicker.min.js"></script>
+        <script src="js/nav.js"></script>
         <script src="/js/form.js"></script>
     </body>
 </html>

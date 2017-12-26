@@ -41,17 +41,7 @@
                         </div>
         			</div>
         		</header>
-        		<nav role="nav">
-                    <div class="nav-wrapper">
-                        <div class="nav-item-01"><a href="">Dashboard</a></div>
-                        <div class="nav-item-02"><a href="">Order Management</a></div>
-                        <div class="nav-item-03"><a href="">Reporting</a></div>
-                        <div class="nav-item-04"><a href="">Marketing</a></div>
-                        <div class="nav-item-05 active"><a href="index.html">Promotions</a></div>
-                        <div class="nav-item-06"><a href="">Store</a></div>
-                        <div class="nav-item-07"><a href="">Help</a></div>
-                    </div>
-                </nav>
+        		<nav role="nav" id="nav"></nav>
         		<main role="main">
                     <div class="content-wrapper">
                         <div class="content-heading">
@@ -61,6 +51,7 @@
                             </div>
                         </div>
                         <div class="content-bg">
+                            <div id="status-active" class="status-warning">You currently do not have any active promotions.</div>
                             <!-- promotions data starts here -->
                             <div class="promotions-grid" id="promotions-grid-active">
                                 <div class="promo-heading name"><span>Name</span></div>
@@ -77,6 +68,7 @@
                             <h2>Inactive Promotions</h2>
                         </div>
                         <div class="content-bg">
+                            <div id="status-inactive" class="status-warning">You currently do not have any inactive promotions.</div>
                             <!-- promotions data starts here -->
                             <div class="promotions-grid" id="promotions-grid-inactive">
                                 <div class="promo-heading name"><span>Name</span></div>
@@ -91,6 +83,7 @@
         		</main>
         	</div>
         </div>
+        <script src="js/nav.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

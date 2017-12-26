@@ -2,7 +2,7 @@
   // retrieve old Promotions and populate array, otherwise create empty
   var oldPromotions = JSON.parse(localStorage.getItem('PromotionsArray')) || [];
   console.log(oldPromotions);
-
+  var contentBg = document.getElementById('content-bg');
   var element = "";
 
   function writeRowToPage(dataObject, element) {
@@ -88,22 +88,24 @@
       statusDisSpan.append(statusDisImage);
       statusDis.appendChild(statusDisSpan);
       element.appendChild(statusDis);
-      //pmsgHead
-      pmsgHead = document.createElement('div');
-      pmsgHead.setAttribute('class', 'promo-heading message');
-      pmsgHeadSpan = document.createElement('span');
-      pmsgHeadData = document.createTextNode('Promotional Message');
-      pmsgHeadSpan.append(pmsgHeadData);
-      pmsgHead.appendChild(pmsgHeadSpan);
-      element.appendChild(pmsgHead);
-      //prMessage
-      prMessage = document.createElement('div');
-      prMessage.setAttribute('class', 'promo-data message');
-      prMessageSpan = document.createElement('span');
-      prMessageData = document.createTextNode(dataObject.prMessage);
-      prMessageSpan.append(prMessageData);
-      prMessage.appendChild(prMessageSpan);
-      element.appendChild(prMessage);
+      if (dataObject.prMessage.length) {
+        //pmsgHead
+        pmsgHead = document.createElement('div');
+        pmsgHead.setAttribute('class', 'promo-heading message');
+        pmsgHeadSpan = document.createElement('span');
+        pmsgHeadData = document.createTextNode('Promotional Message');
+        pmsgHeadSpan.append(pmsgHeadData);
+        pmsgHead.appendChild(pmsgHeadSpan);
+        element.appendChild(pmsgHead);
+        //prMessage
+        prMessage = document.createElement('div');
+        prMessage.setAttribute('class', 'promo-data message');
+        prMessageSpan = document.createElement('span');
+        prMessageData = document.createTextNode(dataObject.prMessage);
+        prMessageSpan.append(prMessageData);
+        prMessage.appendChild(prMessageSpan);
+        element.appendChild(prMessage);
+      }
   }
 
   //populate promotions list from old promotions
@@ -112,9 +114,15 @@
       for (var i = 0; i < oldPromotions.length; i++) {
           for (prStatus in oldPromotions[i]) {
             if (oldPromotions[i][prStatus] == 'active') {
+              myStatus = document.getElementById("status-active");
+              myStatus.style.display = 'none';
               element = document.getElementById("promotions-grid-active");
+              element.style.visibility = 'visible';
             } else if (oldPromotions[i][prStatus] == 'inactive') {
+              myStatus = document.getElementById("status-inactive");
+              myStatus.style.display = 'none';
               element = document.getElementById("promotions-grid-inactive");
+              element.style.visibility = 'visible';
             }
           }
           writeRowToPage(oldPromotions[i],element);

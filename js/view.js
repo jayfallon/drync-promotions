@@ -51,8 +51,12 @@
     prStatusIn.setAttribute('name', 'prStatus');
     prStatusIn.setAttribute('id', 'prStatus');
     prStatusIn.setAttribute('value', dataObject.prStatus);
+    prStatusIn.setAttribute('data', [i]);
+    if (dataObject.prStatus == "active") {
+      prStatusIn.checked = true;
+    }
     prStatus.appendChild(prStatusIn);
-   
+
     prStatusLa = document.createElement('label');
     prStatusLa.setAttribute('for', 'prStatus');
     prStatusLa.setAttribute('id', 'status');
@@ -120,9 +124,9 @@
     // minimum
     minimum = document.createElement('div');
     minimum.setAttribute('class', 'grid-data min');
-    if (dataObject.priceMin) {
+    if (dataObject.minPurch) {
       minimumSpan = document.createElement('span');
-      minimumData = document.createTextNode('$'+dataObject.priceMin);
+      minimumData = document.createTextNode('$'+dataObject.minPurch);
       minimumSpan.append(minimumData);
       minimum.appendChild(minimumSpan);
     }
@@ -260,26 +264,27 @@
     type = document.createElement('div');
     type.setAttribute('class', 'grid-data type');
     typeSpan = document.createElement('span');
-    typeData = document.createTextNode(dataObject.filregion);
+    typeData = document.createTextNode(dataObject.filRegion);
     typeSpan.append(typeData);
     type.appendChild(typeSpan);
     viewGrid.appendChild(type);
-
-    discH = document.createElement('div');
-    discH.setAttribute('class', 'grid-heading promo-message');
-    discHSp = document.createElement('span');
-    discTx = document.createTextNode('Promotion Message');
-    discHSp.appendChild(discTx);
-    discH.appendChild(discHSp);
-    viewGrid.appendChild(discH);
-    // //prMessage
-    prMessage = document.createElement('div');
-    prMessage.setAttribute('class', 'grid-data promo-message');
-    prMessageSpan = document.createElement('span');
-    prMessageData = document.createTextNode(dataObject.prMessage);
-    prMessageSpan.append(prMessageData);
-    prMessage.appendChild(prMessageSpan);
-    viewGrid.appendChild(prMessage);
+    if (dataObject.prMessage.length) {
+      discH = document.createElement('div');
+      discH.setAttribute('class', 'grid-heading promo-message');
+      discHSp = document.createElement('span');
+      discTx = document.createTextNode('Promotion Message');
+      discHSp.appendChild(discTx);
+      discH.appendChild(discHSp);
+      viewGrid.appendChild(discH);
+      // //prMessage
+      prMessage = document.createElement('div');
+      prMessage.setAttribute('class', 'grid-data promo-message show-quote');
+      prMessageSpan = document.createElement('span');
+      prMessageData = document.createTextNode(dataObject.prMessage);
+      prMessageSpan.append(prMessageData);
+      prMessage.appendChild(prMessageSpan);
+      viewGrid.appendChild(prMessage);
+    }
 
     element.appendChild(viewGrid);
   }
@@ -311,14 +316,11 @@
       oldPromotions[status].prStatus = "active";
     }
     localStorage.setItem('PromotionsArray', JSON.stringify(oldPromotions));
-    location.assign("/");
+    location.assign("/view.html?" + chisme);
   }
 
-  var statusToggle = document.getElementsByClassName("status-toggle");
-
-  for (var i = 0; i < statusToggle.length; i++) {
-      statusToggle[i].addEventListener('click', statusChange);
-  }
+  var statusToggle = document.getElementById("prStatus");
+  statusToggle.addEventListener('click', statusChange);
 
   // console.log(statusToggle);
 })();

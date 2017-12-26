@@ -48,15 +48,29 @@
         document.getElementById("prMessage").value = '';
     }
 
+    prStatusVal = 'active';
+
     prStatus.addEventListener('click', function(){
-        console.log('working');
         var status = document.getElementById('status');
         if (this.checked == true) {
-            this.setAttribute('value', 'active');
+            prStatusVal = 'active';
             status.innerHTML = "Active";
         } else if (this.checked != true){
-            this.setAttribute('value', 'inactive');
+            prStatusVal = 'inactive';
             status.innerHTML = "Inactive";
+        }
+    })
+
+    saleItemsVal = 'included';
+
+    saleItems.addEventListener('change', function(){
+        var status = document.getElementById('saleLabel');
+        if (this.checked == true) {
+            saleItemsVal = "included";
+            status.innerHTML = "Included";
+        } else if (this.checked != true){
+            saleItemsVal = "excluded";
+            status.innerHTML = "Excluded";
         }
     })
 
@@ -79,11 +93,11 @@
         //Get values from the web form
         var prName = document.getElementById("prName").value;
         var prCode = document.getElementById("prCode").value;
-        var prStatus = document.getElementById("prStatus").value;
+        var prStatus = prStatusVal;
         var prAmount = document.getElementById("prAmount").value;
         var prType = document.getElementById("prType").value;
         var minPurch = document.getElementById("minPurch").value;
-        var saleItems = document.getElementById("saleItems").value;
+        var saleItems = saleItemsVal;
         var perStart = document.getElementById("perStart").value;
         var perStop = document.getElementById("perStop").value;
         var priceMin = document.getElementById("priceMin").value;
@@ -92,10 +106,10 @@
         var filType = document.getElementById("filType").value;
         var filRegion = document.getElementById("filRegion").value;
         var prMessage = document.getElementById("prMessage").value;
-        
+
         // post any new form data to the constructor object
         var myNewPromotion = new newPromotion( prNumber, prName, prCode, prStatus, prAmount, prType, minPurch, saleItems, perStart, perStop, priceMin, priceMax, filType, filStyle, filRegion, prMessage );
-        
+
         // append myNewPromotion to existing array
         oldPromotions.push(myNewPromotion);
 
