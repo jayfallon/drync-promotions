@@ -4,6 +4,10 @@
   var oldPromotions = JSON.parse(localStorage.getItem('PromotionsArray')) || [];
   console.log(oldPromotions);
 
+  var filTypeVal = '';
+  var filStyleVal = '';
+  var filRegionVal = '';
+
   $('span.store-link').click(function(){
       var link = $(this);
       var view = $('#all-stores-view');
@@ -28,9 +32,7 @@
   var perStop = document.getElementById("perStop");
   var priceMin = document.getElementById("priceMin");
   var priceMax = document.getElementById("priceMax");
-  var filStyle = document.getElementById("filStyle");
-  var filType = document.getElementById("filType");
-  var filRegion = document.getElementById("filRegion");
+  var filType = document.getElementById("filTypeSel");
   var prMessage = document.getElementById("prMessage");
   var prStatusW = document.getElementById("prStatusW");
   var saleItemsIn = document.getElementById("saleItemsIn");
@@ -57,16 +59,75 @@
       saleItemsIn.checked = true;
       saleLabel.innerHTML = "Included";
     } else {
+      saleItemsIn.checked = false;
       saleLabel.innerHTML = "Excluded";
     }
     perStart.value = dataObject.perStart;
     perStop.value = dataObject.perStop;
     priceMin.value = dataObject.priceMin;
     priceMax.value = dataObject.priceMax;
-    filStyle.value = dataObject.filStyle;
     filType.value = dataObject.filType;
-    filRegion.value = dataObject.filRegion;
+    if (filType.value == 'wine') {
+      wineSelects(oldPromotions[i]);
+    }
     prMessage.value = dataObject.prMessage;
+  }
+
+  function wineSelects(dataObject) {
+    filStyleH = document.getElementById('filStyleH');
+    filStyleSp = document.createElement('span');
+    filStyleTx = document.createTextNode('Style')
+    filStyleSp.appendChild(filStyleTx);
+    filStyleH.appendChild(filStyleSp);
+    filRegionH = document.getElementById('filRegionH');
+    filRegionSp = document.createElement('span');
+    filRegionTx = document.createTextNode('Region')
+    filRegionSp.appendChild(filRegionTx);
+    filRegionH.appendChild(filRegionSp);
+    filStyleW = document.getElementById('filStyleW');
+    filStyleSe = document.createElement('select');
+    filStyleSe.setAttribute('id', 'filStyleSel');
+
+    var styles = [
+        {'value': '', 'name': 'Choose Style'},
+        {'value': 'red', 'name': 'Red'},
+        {'value': 'white', 'name': 'White'},
+        {'value': 'rose', 'name': 'Rosé'},
+        {'value': 'sparkling', 'name': 'Sparkling'}
+    ]
+    for (var i = 0; i < styles.length; i++) {
+        filStyleO0 = document.createElement('option');
+        filStyleO0.setAttribute('value', styles[i].value);
+        filStyleO0Tx = document.createTextNode(styles[i].name);
+        filStyleO0.appendChild(filStyleO0Tx);
+        filStyleSe.appendChild(filStyleO0);
+    }
+    filStyleW.appendChild(filStyleSe);
+    var filStyle = document.getElementById('filStyleSel');
+    filStyle.value = dataObject.filStyle;
+
+    filRegionW = document.getElementById('filRegionW');
+    filRegionSe = document.createElement('select');
+    filRegionSe.setAttribute('id', 'filRegionSel');
+
+    var regions = [
+        {'value': '', 'name': 'Choose Region'},
+        {'value': 'argentina', 'name': 'Argentina'},
+        {'value': 'australia', 'name': 'Australia'},
+        {'value': 'france', 'name': 'France'},
+        {'value': 'italy', 'name': 'Italy'},
+        {'value': 'spain', 'name': 'Spain'},
+    ]
+    for (var i = 0; i < regions.length; i++) {
+        filRegionO0 = document.createElement('option');
+        filRegionO0.setAttribute('value', regions[i].value);
+        filRegion00Tx = document.createTextNode(regions[i].name);
+        filRegionO0.appendChild(filRegion00Tx);
+        filRegionSe.appendChild(filRegionO0);
+    }
+    filRegionW.appendChild(filRegionSe);
+    var filRegion = document.getElementById('filRegionSel');
+    filRegion.value = dataObject.filRegion;
   }
 
   var urlParams = new URLSearchParams(window.location.search);
@@ -111,12 +172,17 @@
     currentElem.perStop = document.getElementById("perStop").value;
     currentElem.priceMin = document.getElementById("priceMin").value;
     currentElem.priceMax = document.getElementById("priceMax").value;
-    var ft = document.getElementById("filType");
+    var ft = document.getElementById("filTypeSel");
     currentElem.filType = ft.options[ft.selectedIndex].value;
-    var fs = document.getElementById("filStyle");
-    currentElem.filStyle = fs.options[fs.selectedIndex].value;
-    var fr = document.getElementById("filRegion");
-    currentElem.filRegion = fr.options[fr.selectedIndex].value;
+    if (currentElem.filType == "wine") {
+      var fs = document.getElementById("filStyleSel");
+      currentElem.filStyle = fs.options[fs.selectedIndex].value;
+      var fr = document.getElementById("filRegionSel");
+      currentElem.filRegion = fr.options[fr.selectedIndex].value;
+    } else {
+      currentElem.filStyle = '';
+      currentElem.filRegion = '';
+    }
     currentElem.prMessage = document.getElementById("prMessage").value;
 
     localStorage.setItem('PromotionsArray', JSON.stringify(oldPromotions));
@@ -164,6 +230,34 @@
   }
 
   prStatusIn.addEventListener('click', statusChange);
+
+  filType.addEventListener('change',function(){
+    myStyleH = document.getElementById('filStyleH');
+    myStyleW = document.getElementById('filStyleW');
+    myRegionH = document.getElementById('filRegionH');
+    myRegionW = document.getElementById('filRegionW');
+    while (myStyleH.hasChildNodes()) {
+        myStyleH.removeChild(myStyleH.firstChild);
+    }
+    while (myStyleW.hasChildNodes()) {
+        myStyleW.removeChild(myStyleW.firstChild);
+    }
+    while (myRegionH.hasChildNodes()) {
+        myRegionH.removeChild(myRegionH.firstChild);
+    }
+    while (myRegionW.hasChildNodes()) {
+        myRegionW.removeChild(myRegionW.firstChild);
+    }
+    if (this.value == "wine") {
+      for (var i = 0; i < oldPromotions.length; i++) {
+        for (prNumber in oldPromotions[i]) {
+          if (oldPromotions[i][prNumber] == chisme) {
+            wineSelects(oldPromotions[i]);
+          }
+        }
+      }
+    }
+  });
 
   window.onerror = function(msg, url, linenumber) {
       alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);

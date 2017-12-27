@@ -104,7 +104,7 @@
                                     <div class="grid-heading applicable-stores"><span>Applicable Stores</span></div>
                                     <div class="grid-data all-stores"><span class="edit-form">
                                         <input type="checkbox" checked>All Stores</span>
-                                        <span class="store-link">See All</span>
+                                        <span class="store-link">Show All</span>
                                         <div class="all-stores-view" id="all-stores-view">
                                             <div id="all-stores-wrapper">
                                                 <div class="all-stores-data"><input type="checkbox" checked=""><span>store01</span></div>
@@ -150,11 +150,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="grid-heading"><span>Style</span></div>
                                     <div class="grid-heading"><span>Type</span></div>
-                                    <div class="grid-heading type-region"><span>Region</span></div>
-                                    <div class="grid-data">
-                                        <select name="" id="filType">
+                                    <div class="grid-heading" id="filStyleH"></div>
+                                    <div class="grid-heading type-region" id="filRegionH"></div>
+                                    <div class="grid-data" id="filTypeW">
+                                        <select name="" id="filTypeSel">
                                             <option value="">Choose Type</option>
                                             <option value="wine">Wine</option>
                                             <option value="beer">Beer</option>
@@ -162,24 +162,11 @@
                                             <option value="extras">Extras</option>
                                         </select>
                                     </div>
-                                    <div class="grid-data">
-                                        <select name="" id="filStyle">
-                                            <option value="">Choose Style</option>
-                                            <option value="red">Red</option>
-                                            <option value="white">White</option>
-                                            <option value="rose">Ros&#233;</option>
-                                            <option value="sparkling">Sparkling</option>
-                                        </select>
+                                    <div class="grid-data" id="filStyleW">
+                                        
                                     </div>
-                                    <div class="grid-data type-region">
-                                        <select name="" id="filRegion">
-                                            <option value="">Choose Region</option>
-                                            <option value="argentina">Argentina</option>
-                                            <option value="australia">Australia</option>
-                                            <option value="france">France</option>
-                                            <option value="italy">Italy</option>
-                                            <option value="spain">Spain</option>
-                                        </select>
+                                    <div class="grid-data type-region" id="filRegionW">
+                                        
                                     </div>
                                     <div class="grid-heading promo-message"><span>Promotion Message</span></div>
                                     <div class="grid-data promo-message">

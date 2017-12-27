@@ -254,17 +254,21 @@
     viewGrid.appendChild(discH);
     discH = document.createElement('div');
     discH.setAttribute('class', 'grid-heading');
-    discHSp = document.createElement('span');
-    discTx = document.createTextNode('Style');
-    discHSp.appendChild(discTx);
-    discH.appendChild(discHSp);
+    if (dataObject.filStyle) {
+      discHSp = document.createElement('span');
+      discTx = document.createTextNode('Style');
+      discHSp.appendChild(discTx);
+      discH.appendChild(discHSp);
+    }
     viewGrid.appendChild(discH);
     discH = document.createElement('div');
     discH.setAttribute('class', 'grid-heading type-region');
-    discHSp = document.createElement('span');
-    discTx = document.createTextNode('Region');
-    discHSp.appendChild(discTx);
-    discH.appendChild(discHSp);
+    if (dataObject.region) {
+      discHSp = document.createElement('span');
+      discTx = document.createTextNode('Region');
+      discHSp.appendChild(discTx);
+      discH.appendChild(discHSp);
+    }
     viewGrid.appendChild(discH);
     // type
     type = document.createElement('div');
