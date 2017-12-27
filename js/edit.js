@@ -37,6 +37,7 @@
   var saleLabel = document.getElementById("saleLabel");
   var prStatusIn = document.getElementById("prStatusIn");
   var status = document.getElementById("status");
+  var saleItemsVal = '';
 
   function writeRowToPage(dataObject) {
     prName.value = dataObject.prName;
@@ -130,13 +131,14 @@
   }
 
   var deleteButton = document.getElementById('delete');
-  deleteButton.addEventListener('click', function(){
-    oldPromotions.splice(currentElem, 1);
-    localStorage.setItem('PromotionsArray', JSON.stringify(oldPromotions));
-    location.assign("/");
+    deleteButton.addEventListener('click', function(){
+      function findUrl(promo) {
+        return promo.prNumber === chisme;
+      }
+      oldPromotions.splice(oldPromotions.findIndex(findUrl), 1);
+      localStorage.setItem('PromotionsArray', JSON.stringify(oldPromotions));
+      location.assign("/");
   });
-
-  saleItemsVal = '';
 
   saleItemsIn.addEventListener('change', function(){
       var status = document.getElementById('saleLabel');

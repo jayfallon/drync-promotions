@@ -104,6 +104,9 @@
         var prNumber = ID();
         //Get values from the web form
         var prName = document.getElementById("prName").value;
+        if (!prName) {
+            prName = "Temporary Promotion " + prNumber;
+        }
         var prCode = document.getElementById("prCode").value;
         var prStatus = prStatusVal;
         var prAmount = document.getElementById("prAmount").value;
