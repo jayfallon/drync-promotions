@@ -247,10 +247,12 @@
 
     discH = document.createElement('div');
     discH.setAttribute('class', 'grid-heading');
-    discHSp = document.createElement('span');
-    discTx = document.createTextNode('Type');
-    discHSp.appendChild(discTx);
-    discH.appendChild(discHSp);
+    if (dataObject.filType) {
+      discHSp = document.createElement('span');
+      discTx = document.createTextNode('Type');
+      discHSp.appendChild(discTx);
+      discH.appendChild(discHSp);
+    }
     viewGrid.appendChild(discH);
     discH = document.createElement('div');
     discH.setAttribute('class', 'grid-heading');
