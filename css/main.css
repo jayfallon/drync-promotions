@@ -148,6 +148,7 @@ nav {
 	background-size: 25px 25px;
 	background-repeat: no-repeat;
 	background-position: center 10px;
+	text-transform: capitalize;
 	display:flex;
 	justify-content:center;
 	align-items:stretch;
@@ -178,43 +179,43 @@ nav {
 	text-align: center;
 }
 
-.nav-item-01 {
+.nav-item-00 {
 	background-image: url("../img/left-nav/dashboard_FFFFFF.svg");
 	grid-area: dashboard;
 }
 
-.nav-item-02 {
+.nav-item-01 {
 	background-image: url("../img/left-nav/order-management_FFFFFF.svg");
 	grid-area: order-management;
 }
 
-.nav-item-03 {
+.nav-item-02 {
 	background-image: url("../img/left-nav/reporting_FFFFFF.svg");
 	grid-area: reporting;
 }
 
-.nav-item-04 {
+.nav-item-03 {
 	background-image: url("../img/left-nav/marketing_FFFFFF.svg");
 	grid-area: marketing;
 }
 
-.nav-item-05 {
+.nav-item-04 {
 	background-image: url("../img/left-nav/promotions_FFFFFF.svg");
 	background-position: center 8px !important;
 	background-size: 33px 33px !important;
 	grid-area: promotions;
 }
 
-.nav-item-05.active {
+.nav-item-04.active {
 	background-image: url("../img/left-nav/promotions_27292B.svg");
 }
 
-.nav-item-06 {
+.nav-item-05 {
 	background-image: url("../img/left-nav/store_FFFFFF.svg");
 	grid-area: store;
 }
 
-.nav-item-07 {
+.nav-item-06 {
 	background-image: url("../img/left-nav/help_FFFFFF.svg");
 	grid-area: help;
 }
