@@ -4,7 +4,7 @@
   console.log(oldPromotions);
 
   if (oldPromotions.length == 0) {
-    oldPromotions = [{"prNumber":"itdz5rrgcxoxo","prName":"All Argentine Reds","prCode":"ARG18","prStatus":"active","prAmount":"10","prType":"percent","minPurch":"10","saleItems":"included","perStart":"12/26/17","perStop":"12/27/17","priceMin":"10","priceMax":"100","filType":"wine","filStyle":"red","filRegion":"argentina","prMessage":"Save 10% on all Argentine Reds with a $10 purchase"},{"prNumber":"itdz5rrgctest","prName":"Spanish Rioja Special","prCode":"RIO17","prStatus":"inactive","prAmount":"12","prType":"percent","minPurch":"25","saleItems":"included","perStart":"12/26/17","perStop":"12/27/17","priceMin":"10","priceMax":"100","filType":"wine","filStyle":"red","filRegion":"spain","prMessage":"Save 12% on Rioja!!"}];
+    oldPromotions = [{"prNumber":"itdz5rrgcxoxo","prName":"All Argentine Reds","prCode":"ARG18","prStatus":"active","prAmount":"10","prType":"percent","minPurch":"100","saleItems":"included","perStart":"12/26/17","perStop":"12/27/17","priceMin":"100","priceMax":"1000","filType":"wine","filStyle":"red","filRegion":"argentina","prMessage":"Save 10% on Argentinian red wine from 12/28/17 to 1/4/18 when you spend $100 or more."},{"prNumber":"itdz5rrgctest","prName":"Spanish Rioja Special","prCode":"RIO17","prStatus":"inactive","prAmount":"12","prType":"percent","minPurch":"25","saleItems":"included","perStart":"12/26/17","perStop":"12/27/17","priceMin":"10","priceMax":"100","filType":"wine","filStyle":"red","filRegion":"spain","prMessage":"Save 12% on Spanish red wine from 12/28/17 to 1/4/18 when you spend $25 or more."}];
     localStorage.setItem('PromotionsArray', JSON.stringify(oldPromotions));
   }
 

@@ -44,25 +44,6 @@
         this.prMessage = prMessage;
     }
 
-    // clear the form values and make ready to start over
-    function clearForm() {
-        document.getElementById("prName").value = '';
-        document.getElementById("prCode").value = '';
-        document.getElementById("prStatus").value = '';
-        document.getElementById("prAmount").value = '';
-        document.getElementById("prType").value = '';
-        document.getElementById("minPurch").value = '';
-        document.getElementById("saleItems").value = '';
-        document.getElementById("perStart").value = '';
-        document.getElementById("perStop").value = '';
-        document.getElementById("priceMin").value = '';
-        document.getElementById("priceMax").value = '';
-        document.getElementById("filType").value = '';
-        document.getElementById("filStyle").value = '';
-        document.getElementById("filRegion").value = '';
-        document.getElementById("prMessage").value = '';
-    }
-
     prStatusVal = 'active';
 
     prStatus.addEventListener('click', function(){
@@ -123,7 +104,7 @@
                 {'value': '', 'name': 'Choose Style'},
                 {'value': 'red', 'name': 'Red'},
                 {'value': 'white', 'name': 'White'},
-                {'value': 'rose', 'name': 'Rosé'},
+                {'value': 'rosé', 'name': 'Rosé'},
                 {'value': 'sparkling', 'name': 'Sparkling'}
             ]
             for (var i = 0; i < styles.length; i++) {
@@ -141,11 +122,11 @@
 
             var regions = [
                 {'value': '', 'name': 'Choose Region'},
-                {'value': 'argentina', 'name': 'Argentina'},
-                {'value': 'australia', 'name': 'Australia'},
-                {'value': 'france', 'name': 'France'},
-                {'value': 'italy', 'name': 'Italy'},
-                {'value': 'spain', 'name': 'Spain'},
+                {'value': 'Argentinian', 'name': 'Argentina'},
+                {'value': 'Australian', 'name': 'Australia'},
+                {'value': 'French', 'name': 'France'},
+                {'value': 'Italian', 'name': 'Italy'},
+                {'value': 'Spanish', 'name': 'Spain'},
             ]
             for (var i = 0; i < regions.length; i++) {
                 filRegionO0 = document.createElement('option');
@@ -199,7 +180,7 @@
         var filStyle = filStyleVal;
         var filType = filTypeVal;
         var filRegion = filRegionVal;
-        var prMessage = document.getElementById("prMessage").value;
+        var prMessage = 'Save ' + prAmount + ' ' + prType + ' on ' + filRegion + ' ' + filStyle + ' ' + filType + ' from ' + perStart + ' to ' + perStop + ' when you spend $' + minPurch + ' or more.';
 
         // post any new form data to the constructor object
         var myNewPromotion = new newPromotion( prNumber, prName, prCode, prStatus, prAmount, prType, minPurch, saleItems, perStart, perStop, priceMin, priceMax, filType, filStyle, filRegion, prMessage );
