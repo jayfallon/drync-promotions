@@ -1,6 +1,7 @@
 (function(){
   // retrieve old Promotions and populate array, otherwise create empty
   oldPromotions = JSON.parse(localStorage.getItem('PromotionsArray')) || [];
+
   activePromotionsGrid = document.getElementById('promotions-grid-active');
   inactivePromotionsGrid = document.getElementById('promotions-grid-inactive');
   activePromotionsWarning = document.getElementById('no-active-promos');

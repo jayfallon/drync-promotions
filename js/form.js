@@ -13,6 +13,73 @@
     var filStyleVal = '';
     var filRegionVal = '';
 
+    var filTypeVal = '';
+    var filStyleVal = '';
+    var filRegionVal = '';
+
+    var stores = ['Nantasket Junction', 
+        'East Templeton', 
+        'Colrain', 
+        'Dingley Dell', 
+        'Ocean Grove', 
+        'Needham Junction', 
+        'Alms House', 
+        'Lowell', 
+        'Truro', 
+        'Marlboro', 
+        'Fort Warren', 
+        'Camp Marion White', 
+        'Mahkeenac Heights', 
+        'North Hanson', 
+        'Milton', 
+        'Milton Upper Mills', 
+        'West Boxford', 
+        'Shallow Pond', 
+        'Summit Grove', 
+        'Fort Lucas', 
+        'Camp Sayre', 
+        'Grafton', 
+        'Stoughton Junction', 
+        'Williamsville', 
+        'East Sharon', 
+        'Sunnyside', 
+        'Newton Corner', 
+        'Mill Valley', 
+        'Mercer Square', 
+        'Trots Hills', 
+        'Westport Point', 
+        'Cottage Park', 
+        'Willow Lane Adult Trailer Park', 
+        'Sissons Corner', 
+        'Marshfield Hills', 
+        'Oklahoma Heights', 
+        'Dunstable', 
+        'Beach Park', 
+        'East Blackstone', 
+        'Morseville'
+    ]
+
+    function populateStores(array) {
+        allStores = document.getElementById('all-stores-wrapper');
+        for(e in array) {
+            storeData = document.createElement('div');
+            storeData.setAttribute('class', 'all-stores-data');
+            storeInp = document.createElement('input');
+            storeInp.setAttribute('type', 'checkbox');
+            storeInp.setAttribute('name', e);
+            storeInp.checked = true;
+            storeLabel = document.createElement('label');
+            storeLabel.setAttribute('for', e);
+            storeLabelTx = document.createTextNode(array[e]);
+            storeLabel.appendChild(storeLabelTx);
+            storeData.appendChild(storeInp);
+            storeData.appendChild(storeLabel);
+            allStores.appendChild(storeData);
+        }
+    }
+
+    populateStores(stores);
+
     $('span.store-link').click(function(){
         var link = $(this);
         var view = $('#all-stores-view');
@@ -142,7 +209,124 @@
             filRegion.addEventListener('change', function(){
                 filRegionVal = this.value;
             });
-        } else {
+        } 
+        if (this.value == 'beer') {
+            filStyleH = document.getElementById('filStyleH');
+            filStyleSp = document.createElement('span');
+            filStyleTx = document.createTextNode('Style')
+            filStyleSp.appendChild(filStyleTx);
+            filStyleH.appendChild(filStyleSp);
+            filRegionH = document.getElementById('filRegionH');
+            filRegionSp = document.createElement('span');
+            filRegionTx = document.createTextNode('Region')
+            filRegionSp.appendChild(filRegionTx);
+            filRegionH.appendChild(filRegionSp);
+            filStyleW = document.getElementById('filStyleW');
+            filStyleSe = document.createElement('select');
+            filStyleSe.setAttribute('id', 'filStyle');
+
+            var styles = [
+                {'value': '', 'name': 'Choose Style'},
+                {'value': 'ale', 'name': 'Ale'},
+                {'value': 'lager', 'name': 'Lager'},
+                {'value': 'pilsner', 'name': 'Pilsner'},
+                {'value': 'stout', 'name': 'Stout'}
+            ]
+            for (var i = 0; i < styles.length; i++) {
+                filStyleO0 = document.createElement('option');
+                filStyleO0.setAttribute('value', styles[i].value);
+                filStyleO0Tx = document.createTextNode(styles[i].name);
+                filStyleO0.appendChild(filStyleO0Tx);
+                filStyleSe.appendChild(filStyleO0);
+            }
+            filStyleW.appendChild(filStyleSe);
+
+            filRegionW = document.getElementById('filRegionW');
+            filRegionSe = document.createElement('select');
+            filRegionSe.setAttribute('id', 'filRegion');
+
+            var regions = [
+                {'value': '', 'name': 'Choose Region'},
+                {'value': 'American', 'name': 'America'},
+                {'value': 'Belgian', 'name': 'Belgium'},
+                {'value': 'German', 'name': 'Germany'},
+                {'value': 'Czech', 'name': 'Czech Republic'},
+                {'value': 'Thai', 'name': 'Thailand'},
+            ]
+            for (var i = 0; i < regions.length; i++) {
+                filRegionO0 = document.createElement('option');
+                filRegionO0.setAttribute('value', regions[i].value);
+                filRegion00Tx = document.createTextNode(regions[i].name);
+                filRegionO0.appendChild(filRegion00Tx);
+                filRegionSe.appendChild(filRegionO0);
+            }
+            filRegionW.appendChild(filRegionSe);
+            filStyle.addEventListener('change', function(){
+                filStyleVal = this.value;
+            });
+            filRegion.addEventListener('change', function(){
+                filRegionVal = this.value;
+            });
+        }
+        if (this.value == 'spirits') {
+            filStyleH = document.getElementById('filStyleH');
+            filStyleSp = document.createElement('span');
+            filStyleTx = document.createTextNode('Style')
+            filStyleSp.appendChild(filStyleTx);
+            filStyleH.appendChild(filStyleSp);
+            filRegionH = document.getElementById('filRegionH');
+            filRegionSp = document.createElement('span');
+            filRegionTx = document.createTextNode('Region')
+            filRegionSp.appendChild(filRegionTx);
+            filRegionH.appendChild(filRegionSp);
+            filStyleW = document.getElementById('filStyleW');
+            filStyleSe = document.createElement('select');
+            filStyleSe.setAttribute('id', 'filStyle');
+
+            var styles = [
+                {'value': '', 'name': 'Choose Style'},
+                {'value': 'gin', 'name': 'Gin'},
+                {'value': 'rum', 'name': 'Rum'},
+                {'value': 'vodka', 'name': 'Vodka'},
+                {'value': 'whiskey', 'name': 'Whiskey'}
+            ]
+            for (var i = 0; i < styles.length; i++) {
+                filStyleO0 = document.createElement('option');
+                filStyleO0.setAttribute('value', styles[i].value);
+                filStyleO0Tx = document.createTextNode(styles[i].name);
+                filStyleO0.appendChild(filStyleO0Tx);
+                filStyleSe.appendChild(filStyleO0);
+            }
+            filStyleW.appendChild(filStyleSe);
+
+            filRegionW = document.getElementById('filRegionW');
+            filRegionSe = document.createElement('select');
+            filRegionSe.setAttribute('id', 'filRegion');
+
+            var regions = [
+                {'value': '', 'name': 'Choose Region'},
+                {'value': 'English', 'name': 'England'},
+                {'value': 'Scottish', 'name': 'Scotland'},
+                {'value': 'Irish', 'name': 'Ireland'},
+                {'value': 'Welsh', 'name': 'Wales'},
+                {'value': 'Norman', 'name': 'Normandy'},
+            ]
+            for (var i = 0; i < regions.length; i++) {
+                filRegionO0 = document.createElement('option');
+                filRegionO0.setAttribute('value', regions[i].value);
+                filRegion00Tx = document.createTextNode(regions[i].name);
+                filRegionO0.appendChild(filRegion00Tx);
+                filRegionSe.appendChild(filRegionO0);
+            }
+            filRegionW.appendChild(filRegionSe);
+            filStyle.addEventListener('change', function(){
+                filStyleVal = this.value;
+            });
+            filRegion.addEventListener('change', function(){
+                filRegionVal = this.value;
+            });
+        }
+        else {
             while (filStyleH.hasChildNodes()) {
                 filStyleH.removeChild(filStyleH.firstChild);
             }

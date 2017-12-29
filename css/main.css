@@ -3,6 +3,33 @@
 	src: url("fonts/gnuolane/gnuolane rg.ttf");
 }
 
+@keyframes grow {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes FadeIn {
+	0% {opacity: 0; display: none;}
+	50% {display: inherit;}
+	100% {opacity: 1;}
+}
+
+@keyframes Toggler {
+	0% {display: none;}
+	100% {display: inline;}
+}
+
 body {
 	background-color: #f4f7f8;
 	font-family: 'Source Sans Pro', sans-serif;
@@ -228,28 +255,13 @@ main {
 .content-wrapper {
 	padding-left:24px;
 	width:902px;
-	-webkit-animation-name: FadeIn;
-	animation: FadeIn;
-	-webkit-animation-duration: 600ms;
-	animation-duration: 600ms;
-	-webkit-animation-fill-mode: both;
-	animation-fill-mode: both;
+	animation: FadeIn .3s ease-in-out;
 }
 
 .content-wrapper h2 {
 	margin: 0;
 	padding: 20px 0;
 	font-size: 32px;
-}
-
-@keyframes FadeIn {
-	0% {opacity: 0;}
-	100% {opacity: 1;}
-}
-
-@keyframes Toggler {
-	0% {display: none;}
-	100% {display: inline;}
 }
 
 .content-bg {
@@ -281,13 +293,12 @@ main {
 
 #active-promos, #inactive-promos {
 	display: none;
+	animation: grow .1s ease-in-out;
 }
 
 .promotions-grid {
 	display: grid;
-	grid-template-columns: [Name] 250px [Code] 102px [Discount] 68px [Period] auto [Minimum] 72px [Status] auto [Click] 40px;
-	/*grid-template-rows: 40px ;*/
-	/*grid-template-rows: 55px;*/
+	grid-template-columns: [Name] auto [Code] 102px [Discount] 68px [Period] auto [Minimum] 72px [Status] auto [Click] 40px;
 }
 
 #promotions-grid-inactive div, #promotions-grid-inactive div a {
@@ -583,18 +594,23 @@ main {
 	padding: 12px;
 	border: 1px solid #dfdfdf;
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: auto;
+	grid-column-gap: 6px;
 	grid-row-gap: 9px;
 }
 
 .all-stores-data {
 	font-size: 18px;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 }
 
-.all-stores-data span {
+.all-stores-data input {
+	margin-top: 2px;
+}
+
+.all-stores-data label {
 	margin-left: 4px;
 	text-transform: capitalize;
 }
