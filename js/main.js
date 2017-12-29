@@ -1,4 +1,12 @@
 (function(){
+  // retrieve old Promotions and populate array, otherwise create empty
+  oldPromotions = JSON.parse(localStorage.getItem('PromotionsArray')) || [];
+  activePromotionsGrid = document.getElementById('promotions-grid-active');
+  inactivePromotionsGrid = document.getElementById('promotions-grid-inactive');
+  activePromotionsWarning = document.getElementById('no-active-promos');
+  inactivePromotionsWarning = document.getElementById('no-inactive-promos');
+  activePromotions = document.getElementById('active-promos');
+  inactivePromotions = document.getElementById('inactive-promos');
 
   function setStatus() {
     var statusToggle = document.getElementsByClassName("status-toggle");
@@ -7,9 +15,35 @@
     }
   }
 
-  function retreiveData() {
-    // retrieve old Promotions and populate array, otherwise create empty
-    oldPromotions = JSON.parse(localStorage.getItem('PromotionsArray')) || [];
+  function emptyDisplay() {
+    while (activePromotionsGrid.firstChild) {
+        activePromotionsGrid.removeChild(activePromotionsGrid.firstChild);
+    }
+    while (inactivePromotionsGrid.firstChild) {
+        inactivePromotionsGrid.removeChild(inactivePromotionsGrid.firstChild);
+    }
+    activePromotionsWarning.style.display = 'inherit';
+    activePromotions.style.display = 'none';
+    inactivePromotionsWarning.style.display = 'inherit';
+    inactivePromotions.style.display = 'none';
+  }
+
+  function checkCount(array) {
+    activeCount = 0;
+    inactiveCount = 0;
+    for(var i = 0; i < oldPromotions.length; ++i){
+      if(oldPromotions[i].prStatus == 'active'){
+        activeCount++;
+      }
+      if (oldPromotions[i].prStatus == 'inactive') {
+        inactiveCount++;
+      }
+    }
+  }
+
+  checkCount(oldPromotions);
+
+  function fetchData() {
     //seed some data if empty
     if (oldPromotions.length == 0) {
       oldPromotions = [
@@ -20,9 +54,42 @@
     }
   }
 
-  function writeToBg(item, index) {
-    var activeStatus = document.getElementById('promotions-grid-active');
-    var inactiveStatus = document.getElementById('promotions-grid-inactive');
+  var promoHeading = [
+    {'heading': 'name'},
+    {'heading': 'code'},
+    {'heading': 'discount'},
+    {'heading': 'period'},
+    {'heading': 'minimum'},
+    {'heading': 'status'},
+  ]
+
+  function writeHeading(item, index) {
+    //draw grid headings if active or inactive
+    if (activeCount > 0) {
+      gHead = document.createElement('div');
+      gHead.setAttribute('class', 'promo-heading ' + item.heading);
+      gSpan = document.createElement('span');
+      gText = document.createTextNode(item.heading);
+      gSpan.appendChild(gText);
+      gHead.appendChild(gSpan);
+      activePromotionsGrid.appendChild(gHead);
+    }
+    if (inactiveCount > 0) {
+      gHead = document.createElement('div');
+      gHead.setAttribute('class', 'promo-heading ' + item.heading);
+      gSpan = document.createElement('span');
+      gText = document.createTextNode(item.heading);
+      gSpan.appendChild(gText);
+      gHead.appendChild(gSpan);
+      inactivePromotionsGrid.appendChild(gHead);
+    }
+  }
+
+  function populateHeading(contentArray) {
+    contentArray.map(writeHeading);
+  }
+
+  function writeToGrid(item, index) {
     var frag = document.createDocumentFragment();
 
     //prName
@@ -126,50 +193,35 @@
       frag.appendChild(prMessage);
     }
     if (item.prStatus == 'active') {
-      myActiveStatus = document.getElementById("status-active");
-      myActiveStatus.style.display = 'none';
-      myActives = document.getElementById("promotions-grid-active");
-      myActives.style.visibility = 'visible';
-      activeStatus.appendChild(frag);
-    } else if (item.prStatus == 'inactive') {
-      myInactiveStatus = document.getElementById("status-inactive");
-      myInactiveStatus.style.display = 'none';
-      myInactives = document.getElementById("promotions-grid-inactive");
-      myInactives.style.visibility = 'visible';
-      inactiveStatus.appendChild(frag);
+      activePromotionsWarning.style.display = 'none';
+      activePromotionsGrid.appendChild(frag);
+      activePromotions.style.display = 'inherit';
+    } 
+    if (item.prStatus == 'inactive') {
+      inactivePromotionsWarning.style.display = 'none';
+      inactivePromotionsGrid.appendChild(frag);
+      inactivePromotions.style.display = 'inherit';
     }
     setStatus();
   }
 
   function populateContent(contentArray) {
-    contentArray.map(writeToBg);
+    populateHeading(promoHeading);
+    contentArray.map(writeToGrid);
   }
-  retreiveData();
+  fetchData();
   populateContent(oldPromotions);
 
   function statusChange() {
-    retreiveData();
+    fetchData();
     var status = this.getAttribute("data");
-    // console.log(status);
     if (oldPromotions[status].prStatus == "active") {
       oldPromotions[status].prStatus = "inactive";
     } else if (oldPromotions[status].prStatus == "inactive") {
       oldPromotions[status].prStatus = "active";
     }
     localStorage.setItem('PromotionsArray', JSON.stringify(oldPromotions));
-    // location.assign("/");
-    myActiveNode = document.getElementById("promotions-grid-active");
-    while (myActiveNode.firstChild) {
-        myActiveNode.removeChild(myActiveNode.firstChild);
-    }
-    myInactiveNode = document.getElementById("promotions-grid-inactive");
-    while (myInactiveNode.firstChild) {
-        myInactiveNode.removeChild(myInactiveNode.firstChild);
-    }
-    myActiveStatus = document.getElementById("status-active");
-    myActiveStatus.style.display = 'inline';
-    myInactiveStatus = document.getElementById("status-inactive");
-    myInactiveStatus.style.display = 'inline';
+    emptyDisplay();
     populateContent(oldPromotions);
   }
 })();

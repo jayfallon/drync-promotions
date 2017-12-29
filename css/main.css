@@ -279,13 +279,13 @@ main {
 	padding: 0 12px 12px;
 }
 
-#promotions-grid-active, #promotions-grid-inactive {
-	visibility: hidden;
+#active-promos, #inactive-promos {
+	display: none;
 }
 
 .promotions-grid {
 	display: grid;
-	grid-template-columns: [Name] auto [Code] 102px [Discount] 68px [Period] auto [Minimum] 72px [Status] auto [Click] 40px;
+	grid-template-columns: [Name] 250px [Code] 102px [Discount] 68px [Period] auto [Minimum] 72px [Status] auto [Click] 40px;
 	/*grid-template-rows: 40px ;*/
 	/*grid-template-rows: 55px;*/
 }
@@ -376,7 +376,7 @@ main {
 }
 
 .promo-data.message {
-	padding: 0 12px 18px;
+	padding: 0 12px 12px;
 	border-bottom: 1px dashed #EEF0F1;
 	font-size: 18px;
 	grid-column-start: 1;
@@ -387,10 +387,10 @@ main {
 	border: 0;
 }
 
-.promo-data.message:before, .grid-data.show-quote span:before {
+.promo-data.message span:before, .grid-data.show-quote span:before {
     content: open-quote;
 }
-.promo-data.message:after, .grid-data.show-quote span:after {
+.promo-data.message span:after, .grid-data.show-quote span:after {
     content: close-quote;
 }
 
