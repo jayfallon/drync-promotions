@@ -317,6 +317,7 @@ main {
   display: flex;
   align-items: center;
   align-content: stretch;
+  text-transform: capitalize;
 }
 
 .promo-data {
